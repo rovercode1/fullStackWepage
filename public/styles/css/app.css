@@ -27,4 +27,16 @@
     #Home button.btn.btn-primary {
       width: 100%; } }
 
+#shop .products {
+  border: 2px solid #bcbcbc;
+  border-radius: 10px;
+  padding: 0px 10px; }
+#shop .image {
+  width: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  #shop .image img {
+    max-width: 70%; }
+
 /*# sourceMappingURL=app.css.map */
