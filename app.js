@@ -4,10 +4,12 @@ bodyParser = require("body-parser"),
 mongoose = require("mongoose"),
 app = express();
 
-app.use("view engine", "ejs")
+mongoose.connect("mongodb://localhost/shop_app");
+app.set("view engine", "ejs");
+app.use(express.static("public"));
 
 app.get("/", function(req, res){
-  res.send("index");
+  res.render("index");
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
