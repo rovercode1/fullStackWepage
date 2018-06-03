@@ -1,0 +1,41 @@
+#Home{
+  background:url("/images/bora.jpg");
+  .conatiner{
+    height: 90%;
+  }
+  
+  .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+    flex-direction: column;
+  }
+  
+  .box{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1{
+      color:#fff;
+      font-size: 80px;
+      margin-bottom: 40px;
+    }
+  }
+  
+    .btn.btn-primary{
+    width: 90%;
+    background: #ffb74b;
+    font-size: 20px;
+    margin-top: 10px;
+    border: 1px solid #fff8f847;
+  }
+  
+  @media(max-width:1200px){
+    button.btn.btn-primary{
+      width: 100%;
+    }
+  }
+
+}
