@@ -31,23 +31,6 @@ var productSchema = new mongoose.Schema({
 var Product = mongoose.model("Product", productSchema);
 
 
-// Product.create({
-//   quantity:10,
-//   price:9.50,
-//   title:"Great T-shirt",
-//   image:"http://www.topnotchstitching.com/wp-content/uploads/2015/12/t-shirt.jpg",
-//   desc:"very cool, comfortable T-shirt, great for the gym."
-// }, function(err, newProduct){
-//   if(err){
-//     console.log(err);
-//   }else{
-//     console.log(newProduct);
-//   }
-// });
-
-
-
-
 // ============
 // ROUTES
 // ============
@@ -63,19 +46,19 @@ app.get("/shop", function(req, res){
   });
 });
 
-// app.get("/shop/new", function(req, res){
-//   res.render("new");
-// });
+app.get("/shop/new", function(req, res){
+  res.render("new");
+});
 
-// app.post("/shop", function(req, res){
-//     Product.create(req.body.product, function(err, newProduct){
-//     if(err){
-//       console.log(err);
-//     }else{
-//       res.redirect("shop");
-//     }
-//   });
-// });
+app.post("/shop", function(req, res){
+    Product.create(req.body.product, function(err, newProduct){
+    if(err){
+      console.log(err);
+    }else{
+      res.redirect("shop");
+    }
+  });
+});
 
 
 app.listen(process.env.PORT, process.env.IP, function(){
