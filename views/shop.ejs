@@ -1,26 +1,26 @@
 <% include partials/header %>
 <section id="shop">
   <div class="container-fluid">
-    <h1>Shop</h1>
-    <div class="row">
-      <div class="container-fluid">
-        <% product.forEach(function(product){%>
-        <div class="col-3-lg col-md-4 col-sm-12">
-          <div class="products">
-            <div class="title">
-              <h1><%= product.title %></h1>
+    <h1>New Arrivals</h1>
+      <div class="container">
+        <div class="row">
+            <% product.forEach(function(product){%>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+              <div class="products">
+                <div class="image">
+                  <img id="productImage"src="<%= product.image %>">
+                </div>
+                <div class="title">
+                  <p><%= product.title %></p>
+                </div>
+                <div class="price">
+                  <p>£<%= product.price  %></p>
+                </div>
+              </div>
             </div>
-            <div class="image">
-              <img src="<%= product.image %>">
-            </div>
-            <div class="price">
-              <p>£<%= product.price  %></p>
-            </div>
-          </div>
+            <% }) %>
         </div>
-        <% }) %>
       </div>
-    </div>
   </div>
 </section>
 <% include partials/footer %>

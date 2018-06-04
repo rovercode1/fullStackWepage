@@ -1,0 +1,36 @@
+<% include partials/header %>
+<section id="new">
+<div class="container">
+  <h1>New</h1>
+    <form class="needs-validation" action="/shop" method="POST" novalidate>
+      <div class="form-row">
+        <div class="col-md-8 mb-3">
+          <input type="text" name="product[title]" class="form-control" placeholder="Product title" required>
+        </div>
+        <div class="col-md-2 col-sm-6 mb-3">
+          <input type="number" min="0" max="1000" name="product[quantity]" class="form-control" placeholder="Quantity" required>
+        </div>
+        <div class="col-md-2 col-sm-6 mb-3">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text" id="price">£</div>
+            </div>
+              <input type="number" min="0" max="1000" name="product[price]" class="form-control" placeholder="Price" required>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <input type="string" name="product[image]" class="form-control" id="validationTooltip02" placeholder="Image Url" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <textarea class="form-control" rows="10"type="text" name="product[desc]" placeholder="Tell us about your product."></textarea>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">Submit form</button>
+    </form>
+</div>
+</section>
+<% include partials/footer %>
