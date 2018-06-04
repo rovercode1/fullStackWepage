@@ -7,7 +7,6 @@ app = express(),
 // ============
 // MODELS
 // ============
-
 Product = require("./models/product");
 
 // ============

@@ -32,7 +32,7 @@
   max-width: 50%; }
 #shop .products {
   border-radius: 5px;
-  padding: 0px;
+  padding: 0px 5px;
   margin: 10px 0px; }
 #shop .image {
   width: inherit;
@@ -40,11 +40,16 @@
   justify-content: center;
   align-items: center;
   background: red; }
+#shop .title {
+  font-size: 14px; }
 #shop #productImage {
   width: 100%; }
 @media (max-width: 1200px) {
   #shop .container {
     max-width: 100%; } }
+@media (max-width: 768px) {
+  #shop .container {
+    max-width: 512px; } }
 
 #new #price {
   width: 30px; }
