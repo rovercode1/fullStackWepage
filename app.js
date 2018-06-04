@@ -39,9 +39,19 @@ app.get("/shop", function(req, res){
   });
 });
 
+// ============
+// NEW PRODUCT
+// ============
+
+
 app.get("/shop/new", function(req, res){
   res.render("new");
 });
+
+// ============
+// POST NEW PRODUCT
+// ============
+
 
 app.post("/shop", function(req, res){
   Product.create(req.body.product, function (err, newProduct) {
@@ -52,6 +62,26 @@ app.post("/shop", function(req, res){
     }
   });
 });
+
+// ============
+// SHOW MORE OF PRODUCT
+// ============
+
+
+app.get("/shop/:id", function(req, res) {
+  Product.findById(req.params.id, function(err, foundProduct){
+    if(err){
+      console.log(err);
+    }else{
+      res.render("show", {product:foundProduct});
+    }
+  });
+});
+
+// ============
+// PAGE NOT FOUND
+// ============
+
 
 app.get("/*", function(req, res){
 	res.render("notfound");
