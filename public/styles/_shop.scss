@@ -1,9 +1,12 @@
 #shop{
+    .col-lg-3.col-md-4.col-sm-6.col-xs-6 {
+      padding: 0px;
+      max-width: 50%;
+    }  
     .products{
-      border: 2px solid #bcbcbc;
       border-radius: 5px;
-      padding: 0px 10px;
-      padding: 10px;
+      padding: 0px;
+      margin:10px 0px;
     }
     
     .image{
@@ -11,8 +14,19 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      img{
-        max-width: 70%;
-      }
+      background:red;
+
     }
+    
+
+    #productImage{
+      width: 100%;
+    }
+
+  @media(max-width:1200px){
+    .container{
+      max-width:100%;
+    }
+  }
+
 }
