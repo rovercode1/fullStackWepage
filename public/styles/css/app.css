@@ -39,4 +39,7 @@
   #shop .image img {
     max-width: 70%; }
 
+#new #price {
+  width: 30px; }
+
 /*# sourceMappingURL=app.css.map */
