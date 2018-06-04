@@ -11,6 +11,7 @@ app = express();
 mongoose.connect("mongodb://localhost/shop_app");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", function(req, res){
   res.render("index");
@@ -51,13 +52,15 @@ app.get("/shop/new", function(req, res){
 });
 
 app.post("/shop", function(req, res){
-    Product.create(req.body.product, function(err, newProduct){
+  Product.create(req.body.product, function (err, newProduct) {
     if(err){
       console.log(err);
     }else{
-      res.redirect("shop");
+      console.log(newProduct);
+      res.redirect("/shop");
     }
   });
+  console.log(req.body.product);
 });
 
 
