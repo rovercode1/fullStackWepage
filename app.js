@@ -35,6 +35,8 @@ app.get("/shop", function(req, res){
       console.log(err);
     }else{
       res.render("shop", {product:products});
+      var pLength = products.length;
+      console.log(Math.floor(Math.random()*pLength));
     }
   });
 });
@@ -73,7 +75,17 @@ app.get("/shop/:id", function(req, res) {
     if(err){
       console.log(err);
     }else{
-      res.render("show", {product:foundProduct});
+        res.render("show", {product:foundProduct});
+      // Make random item recommendation
+      //  Product.find({}, function(err, products){
+      //     if(err){
+      //       console.log(err);
+      //    }else{
+      //       res.render("shop", {product:products});
+      //      var pLength = products.length;
+      //      console.log(Math.floor(Math.random()*pLength));
+      //   }
+      // });
     }
   });
 });
