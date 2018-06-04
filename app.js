@@ -2,7 +2,13 @@ const
 express = require("express"),
 bodyParser = require("body-parser"),
 mongoose = require("mongoose"),
-app = express();
+app = express(),
+
+// ============
+// MODELS
+// ============
+
+Product = require("./models/product");
 
 // ============
 // APP CONFIG
@@ -10,26 +16,13 @@ app = express();
 
 mongoose.connect("mongodb://localhost/shop_app");
 app.set("view engine", "ejs");
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", function(req, res){
   res.render("index");
 });
 
-// ============
-// MODELS
-// ============
-
-var productSchema = new mongoose.Schema({
-    title : String,
-    quantity : Number,
-    price : Number,
-	  image:
-			{type:String, default:"https://www.wpfreeware.com/wp-content/uploads/2014/09/placeholder-images.jpg"},
-    desc : String,
-});
-var Product = mongoose.model("Product", productSchema);
 
 
 // ============
@@ -56,13 +49,14 @@ app.post("/shop", function(req, res){
     if(err){
       console.log(err);
     }else{
-      console.log(newProduct);
       res.redirect("/shop");
     }
   });
-  console.log(req.body.product);
 });
 
+app.get("/*", function(req, res){
+	res.render("notfound");
+});
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server is working...");
