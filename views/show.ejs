@@ -23,6 +23,21 @@
                      <button class="btn btn-success">ADD TO BAG</button>
                   </form>
                 </div>
+                <div class="buttons">
+                  <a class="btn btn-warning btn-sm" href="/shop/<%= product._id %>/edit">Edit</a>
+                  <button id="myBtn" class="btn btn-danger btn-sm">Delete</button>
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+                      <!-- Modal content -->
+                      <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>Are you sure your want to delete this product?</p>
+                        <form action="/shop/<%= product._id %>?_method=DELETE" method="POST">
+                           <button type="submit" class="btn btn-danger">Yes</button>
+                        </form>
+                      </div>
+                    </div>
+                </div>
             </div>
          </div>
       </div>

@@ -2,7 +2,7 @@
 <section id="new edit">
 <div class="container">
   <h1>Edit '<%= product.title %>'</h1>
-    <form class="needs-validation" action="/shop" method="POST" novalidate>
+    <form class="needs-validation" action="/shop/<%= product._id %>?_method=PUT" method="POST" novalidate>
       <div class="form-row">
         <div class="col-md-8 mb-3">
             <label>Product Title</label>
