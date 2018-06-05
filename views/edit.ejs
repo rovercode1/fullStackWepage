@@ -1,0 +1,41 @@
+<% include partials/header %>
+<section id="new edit">
+<div class="container">
+  <h1>Edit '<%= product.title %>'</h1>
+    <form class="needs-validation" action="/shop" method="POST" novalidate>
+      <div class="form-row">
+        <div class="col-md-8 mb-3">
+            <label>Product Title</label>
+          <input type="text" value="<%=product.title%>" name="product[title]" class="form-control" placeholder="Product title" required>
+        </div>
+        <div class="col-md-2 col-sm-6 mb-3">
+            <label>Quantity</label>
+          <input type="number" min="0" max="1000" value="<%=product.quantity%>" name="product[quantity]" class="form-control" placeholder="Quantity" required>
+        </div>
+        <div class="col-md-2 col-sm-6 mb-3">
+            <label>Price</label>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text" id="price">£</div>
+            </div>
+              <input type="number" min="0" max="1000" value="<%=product.price%>"  name="product[price]" class="form-control" placeholder="Price" required>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+            <label>Image URL</label>
+          <input type="string" value="<%=product.image%>" name="product[image]" class="form-control" id="validationTooltip02" placeholder="Image Url" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+            <label>Tell us about your product</label>
+          <textarea class="form-control" rows="10"type="text" name="product[desc]" placeholder="Tell us about your product."><%= product.desc %></textarea>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">Submit form</button>
+    </form>
+</div>
+</section>
+<% include partials/footer %>
