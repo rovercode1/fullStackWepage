@@ -1,12 +1,7 @@
 const 
-express = require("express"),
-app = express(),
-shopRoutes  = require("./routes/shop.js"),
-authRoutes  = require("./routes/index.js"),
-
-
-Product = require("./models/product"),
-User = require("./models/user");
+mongoose = require("mongoose"),
+Comment = require("./models/comments"),
+Product = require("./models/product");
 
 var data = [
     {    
@@ -37,4 +32,22 @@ var data = [
         category : "Outdoors",
     }, 
     
-]
+];
+
+function seedDB(){
+    Product.remove({}, function(err, delProduct){
+        if(err){
+            console.log(err);
+        }else{
+            Product.create(data, function(err, newProduct){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(newProduct);
+                }
+            });
+        }
+    });
+}
+
+module.exports = seedDB;
