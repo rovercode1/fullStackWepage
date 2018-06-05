@@ -99,7 +99,7 @@ app.get("/shop/:id/edit", function(req, res) {
     if(err){
       console.log(err);
     }else{
-      res.render("/edit",{product:editProduct});
+      res.render("edit",{product:editProduct});
     }
   });
 });
