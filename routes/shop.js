@@ -1,6 +1,7 @@
 var express = require("express"),
 router = express.Router(),
-Product	= require("../models/product");
+Product	= require("../models/product"),
+Comment	= require("../models/comments");
 
 // Get items from database
 router.get("/", function(req, res){
@@ -44,6 +45,7 @@ router.get("/:id", function(req, res) {
     if(err){
       console.log(err);
     }else{
+      console.log(foundProduct.comments)
         res.render("shop/show", {product:foundProduct});
       // Make random item recommendation
       //  Product.find({}, function(err, products){

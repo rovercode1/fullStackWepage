@@ -2,12 +2,12 @@
 <section id="show">
    <div class="container">
       <div class="row">
-         <div class="col-lg-6 col-sm-12">
+         <div class="col-lg-3 col-sm-12">
             <div class="image">
                <img src="<%= product.image %>">
             </div>
          </div>
-         <div class="col-lg-6 col-sm-12">
+         <div class="col-lg-5 col-sm-12">
             <div id="product-box">
                 <div class="title">
                     <p><%= product.title %></p>
@@ -39,6 +39,28 @@
                     </div>
                 </div>
             </div>
+         </div>
+         <div class="col-lg-4 col-sm-12">
+            <% product.comments.forEach(function(comment){%>
+                <div class="user">
+                    <p>Sold by <%= comment.author %></p>
+                </div>
+            <% }) %>
+         </div>
+         <div class="col-lg-8 col-sm-12">
+                 <div class="reviews">
+                    <div id="top-box">
+                        <button class="btn btn-primary">Leave Review</button>
+                    </div>
+                    <hr>
+                <% product.comments.forEach(function(comment){%>
+                    <div id="comments">
+                        <p><%= comment.username %></p>
+                        <p><%= comment.text %></p>
+                    </div> 
+                 </div>
+             <% }) %>
+             
          </div>
       </div>
    </div>

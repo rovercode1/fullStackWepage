@@ -13,4 +13,21 @@
         font-size: 20px;
     }
 
+    .reviews{
+        margin-top: 40px;
+        background: #f5f3f3;
+        padding: 10px 30px;
+        border-radius: 4px;
+    }
+    
+    #top-box{
+    display: flex;
+    justify-content: flex-end;
+    }
+    
+    #comments{
+    padding: 10px;
+    background: #00000012;
+    border-radius: 4px;
+    }
 }

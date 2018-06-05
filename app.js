@@ -5,11 +5,10 @@ mongoose = require("mongoose"),
 methodOveride = require("method-override"),
 app = express(),
 
-// ============
-// MODELS
-// ============
 Product = require("./models/product"),
+Comment = require("./models/comments"),
 User = require("./models/user"),
+seedDB	= require("./seeds"),
 
 // ============
 // ROUTES
@@ -18,6 +17,7 @@ shopRoutes  = require("./routes/shop.js"),
 commentRoutes  = require("./routes/comments.js"),
 authRoutes  = require("./routes/index.js");
 
+seedDB()
 // ============
 // APP CONFIG
 // ============
