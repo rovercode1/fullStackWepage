@@ -2,6 +2,7 @@ const
 express = require("express"),
 bodyParser = require("body-parser"),
 mongoose = require("mongoose"),
+methodOveride = require("method-override"),
 app = express(),
 
 // ============
@@ -17,6 +18,7 @@ mongoose.connect("mongodb://localhost/shop_app");
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOveride("_method"));
 
 app.get("/", function(req, res){
   res.render("index");
@@ -100,6 +102,16 @@ app.get("/shop/:id/edit", function(req, res) {
       console.log(err);
     }else{
       res.render("edit",{product:editProduct});
+    }
+  });
+});
+
+app.put("/shop/:id", function(req, res) {
+  Product.findByIdAndUpdate(req.params.id, req.body.product, function (err, updatedProduct) {
+    if(err){
+      console.log(err);
+    }else{
+      res.redirect("/shop/" + req.params.id);
     }
   });
 });
