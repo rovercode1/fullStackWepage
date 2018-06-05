@@ -106,6 +106,10 @@ app.get("/shop/:id/edit", function(req, res) {
   });
 });
 
+// ============
+// UPDATE PRODUCT
+// ============
+
 app.put("/shop/:id", function(req, res) {
   Product.findByIdAndUpdate(req.params.id, req.body.product, function (err, updatedProduct) {
     if(err){
@@ -116,6 +120,20 @@ app.put("/shop/:id", function(req, res) {
   });
 });
 
+
+// ============
+// DELETE
+// ============
+
+app.delete("/shop/:id", function(req, res) {
+  Product.findByIdAndRemove(req.params.id, function(err, deletedProduct){
+    if(err){
+      console.log(err);
+    }else{
+      res.redirect("/shop");
+    }
+  });
+});
 
 // ============
 // PAGE NOT FOUND

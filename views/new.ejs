@@ -2,7 +2,7 @@
 <section id="new">
 <div class="container">
   <h1>New</h1>
-    <form class="needs-validation" action="/shop" method="POST" novalidate>
+    <form class="needs-validation" action="/shop" method="POST" required>
       <div class="form-row">
         <div class="col-md-8 mb-3">
           <input type="text" name="product[title]" class="form-control" placeholder="Product title" required>
@@ -26,7 +26,7 @@
       </div>
       <div class="form-row">
         <div class="col-md-12 mb-3">
-          <textarea class="form-control" rows="10"type="text" name="product[desc]" placeholder="Tell us about your product."></textarea>
+          <textarea class="form-control" rows="10"type="text" name="product[desc]" placeholder="Tell us about your product." required></textarea>
         </div>
       </div>
       <button class="btn btn-primary" type="submit">Submit form</button>
