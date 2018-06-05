@@ -91,6 +91,21 @@ app.get("/shop/:id", function(req, res) {
 });
 
 // ============
+// EDIT PRODUCT
+// ============
+
+app.get("/shop/:id/edit", function(req, res) {
+  Product.findById(req.params.id, function(err, editProduct){
+    if(err){
+      console.log(err);
+    }else{
+      res.render("/edit",{product:editProduct});
+    }
+  });
+});
+
+
+// ============
 // PAGE NOT FOUND
 // ============
 
