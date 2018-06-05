@@ -8,7 +8,7 @@ router.get("/", function(req, res){
     if(err){
       console.log(err);
     }else{
-      res.render("shop", {product:products});
+      res.render("shop/shop", {product:products});
       var pLength = products.length;
       // console.log(Math.floor(Math.random()*pLength));
     }
@@ -19,7 +19,7 @@ router.get("/", function(req, res){
 // NEW PRODUCT
 // ============
 router.get("/new", function(req, res){
-  res.render("new");
+  res.render("shop/new");
 });
 // ============
 // POST NEW PRODUCT
@@ -44,7 +44,7 @@ router.get("/:id", function(req, res) {
     if(err){
       console.log(err);
     }else{
-        res.render("show", {product:foundProduct});
+        res.render("shop/show", {product:foundProduct});
       // Make random item recommendation
       //  Product.find({}, function(err, products){
       //     if(err){
@@ -68,7 +68,7 @@ router.get("/:id/edit", function(req, res) {
     if(err){
       console.log(err);
     }else{
-      res.render("edit",{product:editProduct});
+      res.render("shop/edit",{product:editProduct});
     }
   });
 });

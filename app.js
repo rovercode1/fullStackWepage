@@ -10,11 +10,13 @@ app = express(),
 // ============
 
 shopRoutes  = require("./routes/shop.js"),
+authRoutes  = require("./routes/index.js"),
 
 // ============
 // MODELS
 // ============
-Product = require("./models/product");
+Product = require("./models/product"),
+User = require("./models/user");
 
 // ============
 // APP CONFIG
@@ -26,28 +28,9 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOveride("_method"));
 
-app.get("/", function(req, res){
-  res.render("index");
-});
-
-
-
-// ============
-// ROUTES
-// ============
-
-
-// ============
-// PAGE NOT FOUND
-// ============
-
 
 app.use("/shop", shopRoutes);
-
-
-app.get("/*", function(req, res){
-	res.render("notfound");
-});
+app.use(authRoutes);
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server is working...");
