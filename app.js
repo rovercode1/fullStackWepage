@@ -36,7 +36,7 @@ app.get("/shop", function(req, res){
     }else{
       res.render("shop", {product:products});
       var pLength = products.length;
-      console.log(Math.floor(Math.random()*pLength));
+      // console.log(Math.floor(Math.random()*pLength));
     }
   });
 });

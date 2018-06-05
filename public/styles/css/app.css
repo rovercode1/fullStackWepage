@@ -57,4 +57,13 @@
 body {
   font-family: 'Roboto', sans-serif; }
 
+#show .row {
+  max-height: 900px; }
+#show img {
+  width: 100%; }
+#show #product-box {
+  font-family: 'Muli', sans-serif;
+  margin-top: 60px;
+  font-size: 20px; }
+
 /*# sourceMappingURL=app.css.map */

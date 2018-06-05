@@ -1,8 +1,32 @@
 <% include partials/header %>
 <section id="show">
-    <div>
-        <h1><%= product.title %></h1>
-    </div>
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-6 col-sm-12">
+            <div class="image">
+               <img src="<%= product.image %>">
+            </div>
+         </div>
+         <div class="col-lg-6 col-sm-12">
+            <div id="product-box">
+                <div class="title">
+                    <p><%= product.title %></p>
+                </div>
+                <div class="price">
+                  <p>£<%= product.price %></p>
+                </div>
+                <div class="stock">
+                  <p>In stock: <%= product.quantity %></p>
+                </div>
+                <div class="cart">
+                  <form action="/bag/:user" method="POST">
+                     <button class="btn btn-success">ADD TO BAG</button>
+                  </form>
+                </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </section>
 
 <% include partials/footer %>
