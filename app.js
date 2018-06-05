@@ -6,6 +6,12 @@ methodOveride = require("method-override"),
 app = express(),
 
 // ============
+// ROUTES
+// ============
+
+shopRoutes  = require("./routes/shop.js"),
+
+// ============
 // MODELS
 // ============
 Product = require("./models/product");
@@ -30,114 +36,13 @@ app.get("/", function(req, res){
 // ROUTES
 // ============
 
-// Get items from database
-app.get("/shop", function(req, res){
-  Product.find({}, function(err, products){
-    if(err){
-      console.log(err);
-    }else{
-      res.render("shop", {product:products});
-      var pLength = products.length;
-      // console.log(Math.floor(Math.random()*pLength));
-    }
-  });
-});
-
-// ============
-// NEW PRODUCT
-// ============
-
-
-app.get("/shop/new", function(req, res){
-  res.render("new");
-});
-
-// ============
-// POST NEW PRODUCT
-// ============
-
-
-app.post("/shop", function(req, res){
-  Product.create(req.body.product, function (err, newProduct) {
-    if(err){
-      console.log(err);
-    }else{
-      res.redirect("/shop");
-    }
-  });
-});
-
-// ============
-// SHOW MORE OF PRODUCT
-// ============
-
-
-app.get("/shop/:id", function(req, res) {
-  Product.findById(req.params.id, function(err, foundProduct){
-    if(err){
-      console.log(err);
-    }else{
-        res.render("show", {product:foundProduct});
-      // Make random item recommendation
-      //  Product.find({}, function(err, products){
-      //     if(err){
-      //       console.log(err);
-      //    }else{
-      //       res.render("shop", {product:products});
-      //      var pLength = products.length;
-      //      console.log(Math.floor(Math.random()*pLength));
-      //   }
-      // });
-    }
-  });
-});
-
-// ============
-// EDIT PRODUCT
-// ============
-
-app.get("/shop/:id/edit", function(req, res) {
-  Product.findById(req.params.id, function(err, editProduct){
-    if(err){
-      console.log(err);
-    }else{
-      res.render("edit",{product:editProduct});
-    }
-  });
-});
-
-// ============
-// UPDATE PRODUCT
-// ============
-
-app.put("/shop/:id", function(req, res) {
-  Product.findByIdAndUpdate(req.params.id, req.body.product, function (err, updatedProduct) {
-    if(err){
-      console.log(err);
-    }else{
-      res.redirect("/shop/" + req.params.id);
-    }
-  });
-});
-
-
-// ============
-// DELETE
-// ============
-
-app.delete("/shop/:id", function(req, res) {
-  Product.findByIdAndRemove(req.params.id, function(err, deletedProduct){
-    if(err){
-      console.log(err);
-    }else{
-      res.redirect("/shop");
-    }
-  });
-});
 
 // ============
 // PAGE NOT FOUND
 // ============
+
+
+app.use("/shop", shopRoutes);
 
 
 app.get("/*", function(req, res){
