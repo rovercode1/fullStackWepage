@@ -8,15 +8,30 @@
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
               <div class="products">
                 <div class="image">
-                  <img id="productImage"src="<%= product.image %>">
+                  <a  href="/shop/<%= product._id %>">
+                    <img id="productImage"src="<%= product.image %>">
+                  </a>
                 </div>
                 <div class="title">
                   <p><%= product.title %></p>
                 </div>
                 <div class="price">
-                  <p>£<%= product.price  %></p>
+                  <p>£<%= product.price  %>.00</p>
                 </div>
-                <a class="btn btn-primary"href="/shop/<%= product._id %>">View More</a>
+                <div class="buttons">
+                  <button id="myBtn" class="btn btn-danger btn-sm">Delete</button>
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+                      <!-- Modal content -->
+                      <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>Are you sure your want to delete this product?</p>
+                        <form action="/shop/<%= product._id %>?_method=DELETE" method="POST">
+                           <button type="submit" class="btn btn-danger">Yes</button>
+                        </form>
+                      </div>
+                    </div>
+                </div>
               </div>
             </div>
             <% }) %>
