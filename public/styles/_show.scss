@@ -13,4 +13,35 @@
         font-size: 20px;
     }
 
+    .reviews{
+        margin-top: 40px;
+        background: #f5f3f3;
+        padding: 10px 30px;
+        border-radius: 4px;
+    }
+    
+    #top-box{
+    display: flex;
+    justify-content: flex-end;
+    }
+    
+    #comments{
+    padding: 10px;
+    background: #00000012;
+    border-radius: 4px;
+    }
+    #recommendation{
+        width: 100%;
+        background: #0000000a;
+        height: 300px;
+        margin: 40px 0px;
+    }
+    
+    #info-box{
+        width: 100%;
+        background: #0000000a;
+        height: 300px;
+        margin: 40px 0px;
+        padding: 20px;
+    }
 }

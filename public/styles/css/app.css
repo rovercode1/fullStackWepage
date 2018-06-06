@@ -31,29 +31,36 @@
   padding: 0px;
   max-width: 50%; }
 #shop .products {
-  border-radius: 5px;
+  border: 1px solid #e5e5e5;
   padding: 0px 5px;
-  margin: 10px 0px; }
-#shop .image {
-  width: inherit;
+  margin: 10px 0px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  background: red;
+  max-height: 500px; }
+#shop .image {
+  max-width: 300px;
+  height: 300px;
+  max-height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: 0.2s; }
   #shop .image:hover {
     opacity: 0.8; }
+  #shop .image #productImage {
+    max-width: 185px;
+    width: 100%; }
 #shop .title {
   font-size: 14px; }
-#shop #productImage {
-  width: 100%; }
 #shop #delete {
   display: inline-block;
   margin: 0px; }
 #shop .buttons {
   display: flex;
   justify-content: space-between;
-  aligin-items: center; }
+  aligin-items: center;
+  margin-bottom: 10px; }
 #shop form {
   display: flex; }
   #shop form button {
@@ -79,6 +86,29 @@ body {
   font-family: 'Muli', sans-serif;
   margin-top: 60px;
   font-size: 20px; }
+#show .reviews {
+  margin-top: 40px;
+  background: #f5f3f3;
+  padding: 10px 30px;
+  border-radius: 4px; }
+#show #top-box {
+  display: flex;
+  justify-content: flex-end; }
+#show #comments {
+  padding: 10px;
+  background: #00000012;
+  border-radius: 4px; }
+#show #recommendation {
+  width: 100%;
+  background: #0000000a;
+  height: 300px;
+  margin: 40px 0px; }
+#show #info-box {
+  width: 100%;
+  background: #0000000a;
+  height: 300px;
+  margin: 40px 0px;
+  padding: 20px; }
 
 /* The Modal (background) */
 .modal {

@@ -1,6 +1,7 @@
 var express = require("express"),
 router = express.Router(),
-Product	= require("../models/product");
+Product	= require("../models/product"),
+Comment	= require("../models/comments");
 
 // Get items from database
 router.get("/", function(req, res){
@@ -8,7 +9,7 @@ router.get("/", function(req, res){
     if(err){
       console.log(err);
     }else{
-      res.render("shop", {product:products});
+      res.render("shop/shop", {product:products});
       var pLength = products.length;
       // console.log(Math.floor(Math.random()*pLength));
     }
@@ -19,7 +20,7 @@ router.get("/", function(req, res){
 // NEW PRODUCT
 // ============
 router.get("/new", function(req, res){
-  res.render("new");
+  res.render("shop/new");
 });
 // ============
 // POST NEW PRODUCT
@@ -38,13 +39,14 @@ router.post("/", function(req, res){
 // SHOW MORE OF PRODUCT
 // ============
 
-
 router.get("/:id", function(req, res) {
-  Product.findById(req.params.id, function(err, foundProduct){
+  // Populate - Finds the infomation in the comments id
+  Product.findById(req.params.id).populate("comments").exec(function(err, foundProduct){
     if(err){
       console.log(err);
     }else{
-        res.render("show", {product:foundProduct});
+      console.log(foundProduct);
+        res.render("shop/show", {product:foundProduct});
       // Make random item recommendation
       //  Product.find({}, function(err, products){
       //     if(err){
@@ -68,7 +70,7 @@ router.get("/:id/edit", function(req, res) {
     if(err){
       console.log(err);
     }else{
-      res.render("edit",{product:editProduct});
+      res.render("shop/edit",{product:editProduct});
     }
   });
 });
