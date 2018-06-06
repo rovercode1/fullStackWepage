@@ -109,7 +109,10 @@ body {
       margin-right: 10px; }
     #show .quantity input {
       max-width: 70px; }
+  #show .buttons {
+    margin: 10px 0px; }
   #show .reviews {
+    width: 100%;
     margin: 40px 0px;
     padding: 15px 30px;
     border-radius: 4px;
