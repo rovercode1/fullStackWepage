@@ -28,8 +28,7 @@
       width: 100%; } }
 
 #shop .col-lg-3.col-md-4.col-sm-6.col-xs-6 {
-  padding: 0px;
-  max-width: 50%; }
+  padding: 0px; }
 #shop .products {
   border: 1px solid #e5e5e5;
   padding: 0px 5px;
@@ -41,7 +40,6 @@
 #shop .image {
   max-width: 300px;
   height: 300px;
-  max-height: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,7 +96,6 @@ body {
       max-width: 360px; }
   #show #product-box {
     font-family: 'Muli', sans-serif;
-    margin-top: 60px;
     font-size: 15px; }
   #show .title p {
     font-weight: 700;
