@@ -3,7 +3,7 @@ router = express.Router(),
 Product	= require("../models/product"),
 Comment	= require("../models/comments");
 
-router.get("/shop/:id/comment/new", function(req, res){
+router.get("/:id/comment/new", function(req, res){
   Product.findById(req.params.id, function(err, product){
     if(err){
       console.log(err);
@@ -13,7 +13,7 @@ router.get("/shop/:id/comment/new", function(req, res){
   });
 });
 
-router.post("/shop/:id/comment", function(req ,res){
+router.post("/:id/comment", function(req ,res){
   Product.findById(req.params.id, function (err, product) {
     if(err){
       console.log(err);
@@ -22,11 +22,8 @@ router.post("/shop/:id/comment", function(req ,res){
         if(err){
           console.log(err);
         }else{
-          console.log(req.body.comment);
-          console.log(product)
           product.comments.push(comment);
           product.save();
-          console.log(product);
           res.redirect("/shop/"+req.params.id);
         }
       });
