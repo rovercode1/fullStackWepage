@@ -48,7 +48,7 @@ function seedDB(){
         console.log(err);
       }else{
         console.log("Product added!");
-        Comment.create({text:"I love this!", author:{username:"Bjork"}}, function(err, newComment){
+        Comment.create({text:"I love this!", author:"Bjork"}, function(err, newComment){
           if(err){
             console.log(err);
           }else{
