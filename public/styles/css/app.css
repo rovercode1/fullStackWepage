@@ -110,7 +110,15 @@ body {
     #show .quantity input {
       max-width: 70px; }
   #show .buttons {
-    margin: 10px 0px; }
+    margin: 10px 0px;
+    display: flex;
+    align-items: center; }
+    #show .buttons #myBtn {
+      margin-right: 10px; }
+    #show .buttons form {
+      margin: 0px; }
+      #show .buttons form button {
+        margin-right: 10px; }
   #show .reviews {
     width: 100%;
     margin: 40px 0px;
