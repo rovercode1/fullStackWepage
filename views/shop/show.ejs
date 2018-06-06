@@ -1,75 +1,112 @@
 <% include ../partials/header %>
 <section id="show">
-   <div class="container">
-      <div class="row">
-         <div class="col-lg-3 col-sm-12">
-            <div class="image">
-               <img src="<%= product.image %>">
-            </div>
-         </div>
-         <div class="col-lg-5 col-sm-12">
-            <div id="product-box">
-                <div class="title">
-                    <p><%= product.title %></p>
-                </div>
-                <div class="price">
-                  <p>£<%= product.price %></p>
-                </div>
-                <div class="stock">
-                  <p>In stock: <%= product.quantity %></p>
-                </div>
-                <div class="cart">
-                  <form action="/bag/:user" method="POST">
-                     <button class="btn btn-success">ADD TO BAG</button>
-                  </form>
-                </div>
-                <div class="buttons">
-                  <a class="btn btn-warning btn-sm" href="/shop/<%= product._id %>/edit">Edit</a>
-                  <button id="myBtn" class="btn btn-danger btn-sm">Delete</button>
-                    <!-- The Modal -->
-                    <div id="myModal" class="modal">
-                      <!-- Modal content -->
-                      <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <p>Are you sure your want to delete this product?</p>
-                        <form action="/shop/<%= product._id %>?_method=DELETE" method="POST">
-                           <button type="submit" class="btn btn-danger">Yes</button>
-                        </form>
-                      </div>
-                    </div>
-                </div>
-            </div>
-         </div>
-         <div class="col-lg-4 col-sm-12">
-            <div id="info-box">
-                <div class="user">
-                    <p>Sold by : Username </p>
-                    <p>User Rating: </p>
-                </div>
-            </div>
-         </div>
-         <div id="recommendation">
-            <div>
-              
-            </div> 
-         </div>
-         <div class="col-lg-8 col-sm-12">
-                 <div class="reviews">
-                    <div id="top-box">
-                        <button class="btn btn-primary">Leave Review</button>
-                    </div>
-                    <hr>
-                <% product.comments.forEach(function(comment){%>
-                    <div id="comments">
-                        <a href="#"><%= comment.author %></a>
-                        <p><%= comment.text %></p>
-                    </div> 
-                 </div>
-             <% }) %>
-             
-         </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-sm-12">
+        <div class="image">
+          <img src="<%= product.image %>">
+        </div>
       </div>
-   </div>
+      <div class="col-lg-4 col-sm-12">
+        <div id="product-box">
+          <div class="title">
+            <p><%= product.title %></p>
+          </div>
+          <hr>
+          <div>
+            <p>Condition: </p>
+          </div>
+          <div>
+            <div class="price">
+              <p>£<%= product.price %>.00</p>
+            </div>
+            <div class="quantity">
+             <p>Quantity </p>
+             <input class="form-control"type="number" min="1" max="<%=  product.quantity %>">
+            </div>
+            <div class="cart">
+              <form action="/bag/:user" method="POST">
+                <button class="btn btn-success">ADD TO BAG</button>
+              </form>
+            </div>
+          </div>
+          <div class="buttons">
+            <a class="btn btn-warning btn-sm" href="/shop/<%= product._id %>/edit">Edit</a>
+            <button id="myBtn" class="btn btn-danger btn-sm">Delete</button>
+            <!-- The Modal -->
+              <div id="myModal" class="modal">
+              <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p>Are you sure your want to delete this product?</p>
+                  <form action="/shop/<%= product._id %>?_method=DELETE" method="POST">
+                  <button type="submit" class="btn btn-danger">Yes</button>
+                </form>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-12">
+        <div id="info-box">
+          <div class="user">
+            <p>Sold by : Username </p>
+            <p>User Rating: </p>
+              <div class="stock">
+                <p>In stock: <%= product.quantity %></p>
+            </div>
+          </div>
+        </div>
+      <!--<div id="info-box">-->
+      <!-- <div id="recommendation">-->
+      <!--        <p>People also bought: </p>-->
+      <!--        <div class="">-->
+      
+      <!--        </div>-->
+      <!--    </div>-->
+      <!--</div>-->
+      </div>
+      <div id="description">
+        <div id="desc">
+          <h3>Item description</h3> 
+          <p><%= product.desc  %></p>
+        </div>
+      </div>
+      <!--<div id="tabShow">-->
+      <!--  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">-->
+      <!--    <li class="nav-item">-->
+      <!--      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>-->
+      <!--    </li>-->
+      <!--    <li class="nav-item">-->
+      <!--      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>-->
+      <!--    </li>-->
+      <!--    <li class="nav-item">-->
+      <!--      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>-->
+      <!--    </li>-->
+      <!--  </ul>-->
+      <!--  <div class="tab-content" id="pills-tabContent">-->
+      <!--    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...</div>-->
+      <!--    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>-->
+      <!--    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>-->
+      <!--  </div>-->
+      <!--</div>-->
+      <div class="col-lg-8 col-sm-12">
+        <div class="reviews">
+          <div id="top-box">
+            <a href="/shop/<%= product._id  %>/comment/new"class="btn btn-primary">Leave Review</a>
+          </div>
+        <hr>
+            <% product.comments.forEach(function(comment){%>
+              <div class="comments">
+                <a href="#"><%= comment.author %></a>
+                <p><%= comment.text %></p>
+                <hr>
+              </div> 
+            <% }) %>
+          </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <% include ../partials/footer %>

@@ -17,7 +17,7 @@ shopRoutes  = require("./routes/shop.js"),
 commentRoutes  = require("./routes/comments.js"),
 authRoutes  = require("./routes/index.js");
 
-seedDB()
+// seedDB();
 // ============
 // APP CONFIG
 // ============
@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOveride("_method"));
 
 app.use("/shop", shopRoutes);
-app.use("/shop/:id", commentRoutes);
+app.use("/shop",commentRoutes);
 app.use(authRoutes);
 
 app.listen(process.env.PORT, process.env.IP, function(){

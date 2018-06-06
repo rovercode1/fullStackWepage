@@ -1,47 +1,95 @@
-#show{
-    .row{
-        max-height: 900px;
-    }
-    
+  #show{
+    margin-top:50px;
+  .container{
+    max-width: 90%;
+  }
+  .row{
+    max-height: 900px;
+  }
+  
+  img{
+    width:100%;
+    max-width: 500px;
+  }
+  
+  .image{
+    max-width: 100%;
+    flex: d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd;
     img{
-        width:100%;
+      max-width: 360px;
     }
-    
-    #product-box{
-        font-family: 'Muli', sans-serif;
-        margin-top: 60px;
-        font-size: 20px;
+  }
+  
+  #product-box{
+    font-family: 'Muli', sans-serif;
+    font-size: 15px;
+  }
+  .title{
+  p{
+    font-weight: 700; 
+    font-size:20px;
     }
-
-    .reviews{
-        margin-top: 40px;
-        background: #f5f3f3;
-        padding: 10px 30px;
-        border-radius: 4px;
+  }
+  
+  .quantity{
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+    p{
+      margin: 0px;
+      margin-right: 10px;
     }
-    
-    #top-box{
+    input{
+      max-width: 70px;
+    }
+  }
+  
+  .reviews{
+    margin: 40px 0px;
+    padding: 15px 30px;
+    border-radius: 4px;
+    border: 1px solid #d4d4d4;
+  }
+  
+  #top-box{
     display: flex;
     justify-content: flex-end;
-    }
-    
-    #comments{
+  }
+  
+  .comments{
     padding: 10px;
-    background: #00000012;
-    border-radius: 4px;
+    background: #00000000;
+    margin: 0px 10px;
+    hr{
+      margin:0px;
     }
-    #recommendation{
-        width: 100%;
-        background: #0000000a;
-        height: 300px;
-        margin: 40px 0px;
+  }
+  #description{
+    width: 100%;
+    background: #0000000a;
+    margin: 40px 0px;
+      #desc{
+      padding: 20px;
     }
-    
-    #info-box{
-        width: 100%;
-        background: #0000000a;
-        height: 300px;
-        margin: 40px 0px;
-        padding: 20px;
-    }
+  }
+  
+  #info-box{
+    width: 100%;
+    background: #0000000a;
+    height: 300px;
+    margin: 40px 0px;
+    padding: 20px;
+    border: 1px solid #ddd;
+  }
+  
+  #tabShow{
+    width: 100%;  
+    border: 1px solid #d2cfcf;
+    padding: 20px;
+    border-radius: 5px;   
+  }
 }
