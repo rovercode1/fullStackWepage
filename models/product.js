@@ -7,14 +7,6 @@ var productSchema = new mongoose.Schema({
     {type:String, default:"https://www.wpfreeware.com/wp-content/uploads/2014/09/placeholder-images.jpg"},
    desc : String,
    category : String,
-   author:{
-      id:
-      {
-         type:mongoose.Schema.Types.ObjectId,
-         ref:"User"
-      },
-      username:String,
-   },
    comments:[
       {
          type:mongoose.Schema.Types.ObjectId,
