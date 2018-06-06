@@ -78,14 +78,37 @@
 body {
   font-family: 'Roboto', sans-serif; }
 
+#show .container {
+  max-width: 90%; }
 #show .row {
   max-height: 900px; }
 #show img {
-  width: 100%; }
+  width: 100%;
+  max-width: 500px; }
+#show .image {
+  max-width: 100%;
+  flex: d;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  #show .image img {
+    max-width: 360px; }
 #show #product-box {
   font-family: 'Muli', sans-serif;
   margin-top: 60px;
+  font-size: 15px; }
+#show .title p {
+  font-weight: 700;
   font-size: 20px; }
+#show .quantity {
+  display: flex;
+  align-items: center;
+  margin: 10px 0px; }
+  #show .quantity p {
+    margin: 0px;
+    margin-right: 10px; }
+  #show .quantity input {
+    max-width: 70px; }
 #show .reviews {
   margin-top: 40px;
   background: #f5f3f3;
@@ -97,18 +120,25 @@ body {
 #show #comments {
   padding: 10px;
   background: #00000012;
-  border-radius: 4px; }
-#show #recommendation {
+  border-radius: 4px;
+  margin: 10px; }
+#show #description {
   width: 100%;
   background: #0000000a;
-  height: 300px;
   margin: 40px 0px; }
+  #show #description #desc {
+    padding: 20px; }
 #show #info-box {
   width: 100%;
   background: #0000000a;
   height: 300px;
   margin: 40px 0px;
   padding: 20px; }
+#show #tabShow {
+  width: 100%;
+  border: 1px solid #d2cfcf;
+  padding: 20px;
+  border-radius: 5px; }
 
 /* The Modal (background) */
 .modal {
