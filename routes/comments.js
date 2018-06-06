@@ -2,7 +2,9 @@ var express = require("express"),
 router = express.Router(),
 Product	= require("../models/product"),
 Comment	= require("../models/comments");
-
+// ==========
+// NEW COMMENT FORM
+// ==========
 router.get("/:id/comment/new", function(req, res){
   Product.findById(req.params.id, function(err, product){
     if(err){
@@ -12,7 +14,9 @@ router.get("/:id/comment/new", function(req, res){
     }
   });
 });
-
+// ==========
+// POST NEW COMMENT
+// ==========
 router.post("/:id/comment", function(req ,res){
   Product.findById(req.params.id, function (err, product) {
     if(err){
@@ -30,4 +34,65 @@ router.post("/:id/comment", function(req ,res){
     }
   });
 });
+
+// ==========
+// EDIT COMMENT
+// ==========
+
+router.get("/:id/comment/:comment_id/edit", function(req, res){
+  Product.findById(req.params.id, function(err, product){
+    if(err){
+      console.log(err);
+    }else{
+      Comment.findById(req.params.comment_id, function(err, foundComment) {
+        if(err){
+          console.log(err);
+        }else{
+          res.render("comments/edit",{product:product, comment:foundComment});
+        }
+      });
+    }
+  });
+});
+
+// ==========
+// UPDATE COMMENT
+// ==========
+
+router.put("/:id/comment/:comment_id/edit", function(req, res){
+  Product.findById(req.params.id, function(err, product){
+    if(err){
+      console.log(err);
+    }else{
+      Comment.findByIdAndUpdate(req.params.comment_id,req.body.comment, function(err, updatedComment) {
+        if(err){
+          console.log(err);
+        }else{
+         res.redirect("/shop/"+req.params.id);
+        }
+      });
+    }
+  });
+});
+
+// ==========
+// DELETE COMMENT
+// ==========
+
+router.delete("/:id/comment/:comment_id", function (req, res) {
+  Product.findById(req.params.id, function(err, product) {
+      if(err){
+        console.log(err);
+      }else{
+      Comment.findByIdAndRemove(req.params.comment_id, function(err, deletedComment){
+        if(err){
+          console.log(err);
+        }else{
+          res.redirect("/shop/" + req.params.id);
+        }
+      });
+      }
+  });
+});
+
 module.exports = router;

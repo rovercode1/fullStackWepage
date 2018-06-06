@@ -10,12 +10,13 @@ router.get("/", function(req, res){
       console.log(err);
     }else{
       res.render("shop/shop", {product:products});
-      var pLength = products.length;
-      // console.log(Math.floor(Math.random()*pLength));
+      // // Random product
+      // var pLength = products.length;
+      // console.log(products[Math.floor(Math.random()*pLength)]);
+      // console.log(pLength);
     }
   });
 });
-
 // ============
 // NEW PRODUCT
 // ============
@@ -34,11 +35,9 @@ router.post("/", function(req, res){
     }
   });
 });
-
 // ============
 // SHOW MORE OF PRODUCT
 // ============
-
 router.get("/:id", function(req, res) {
   // Populate - Finds the infomation in the comments id
   Product.findById(req.params.id).populate("comments").exec(function(err, foundProduct){
@@ -59,11 +58,9 @@ router.get("/:id", function(req, res) {
     }
   });
 });
-
 // ============
 // EDIT PRODUCT
 // ============
-
 router.get("/:id/edit", function(req, res) {
   Product.findById(req.params.id, function(err, editProduct){
     if(err){
@@ -73,11 +70,9 @@ router.get("/:id/edit", function(req, res) {
     }
   });
 });
-
 // ============
 // UPDATE PRODUCT
 // ============
-
 router.put("/:id", function(req, res) {
   Product.findByIdAndUpdate(req.params.id, req.body.product, function (err, updatedProduct) {
     if(err){
@@ -87,12 +82,9 @@ router.put("/:id", function(req, res) {
     }
   });
 });
-
-
 // ============
 // DELETE
 // ============
-
 router.delete("/:id", function(req, res) {
   Product.findByIdAndRemove(req.params.id, function(err, deletedProduct){
     if(err){
