@@ -3,25 +3,34 @@ router = express.Router(),
 Product	= require("../models/product"),
 Comment	= require("../models/comments");
 
-router.get("/comment", function(req, res){
-    res.render("comments/new");
+router.get("/shop/:id/comment/new", function(req, res){
+  Product.findById(req.params.id, function(err, product){
+    if(err){
+      console.log(err);
+    }else{
+      res.render("comments/new",{product:product});
+    }
+  });
 });
 
-router.post("/:id/:comment_id", function(req, res){
-    Product.findById(req.params.id, function(err, foundProduct){
+router.post("/shop/:id/comment", function(req ,res){
+  Product.findById(req.params.id, function (err, product) {
+    if(err){
+      console.log(err);
+    }else{
+      Comment.create(req.body.comment, function(err, comment){
         if(err){
-            console.log(err)
+          console.log(err);
         }else{
-            console.log(foundProduct)
-            Comment.findById(req.params.comment_id, function(err, foundComment){
-                if(err){
-                    console.log(err)
-                }else{
-                    res.render("/shop/show")
-                }
-            })
+          console.log(req.body.comment);
+          console.log(product)
+          product.comments.push(comment);
+          product.save();
+          console.log(product);
+          res.redirect("/shop/"+req.params.id);
         }
-    })
+      });
+    }
+  });
 });
-
 module.exports = router;

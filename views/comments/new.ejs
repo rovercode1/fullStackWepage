@@ -1,0 +1,14 @@
+<% include ../partials/header %>
+<section id="new">
+    <div class="container">
+      <h1>New Comment on: <%= product.title %></h1>
+        <form class="needs-validation" action="/shop/<%= product._id %>/comment" method="POST" required>
+          <div class="form-row">
+            <input class="form-control" type="text" name="comment[author]" placeholder="Enter Username" required>
+             <input class="form-control"type="text" name="comment[text]"  placeholder="Enter Comment"required>
+          </div>
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </form>
+    </div>
+</section>
+<% include ../partials/footer %>

@@ -45,7 +45,6 @@ router.get("/:id", function(req, res) {
     if(err){
       console.log(err);
     }else{
-      console.log(foundProduct);
         res.render("shop/show", {product:foundProduct});
       // Make random item recommendation
       //  Product.find({}, function(err, products){
