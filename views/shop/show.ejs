@@ -41,11 +41,17 @@
             </div>
          </div>
          <div class="col-lg-4 col-sm-12">
-            <% product.comments.forEach(function(comment){%>
+            <div id="info-box">
                 <div class="user">
-                    <p>Sold by <%= comment.author %></p>
+                    <p>Sold by : Username </p>
+                    <p>User Rating: </p>
                 </div>
-            <% }) %>
+            </div>
+         </div>
+         <div id="recommendation">
+            <div>
+              
+            </div> 
          </div>
          <div class="col-lg-8 col-sm-12">
                  <div class="reviews">
@@ -55,7 +61,7 @@
                     <hr>
                 <% product.comments.forEach(function(comment){%>
                     <div id="comments">
-                        <p><%= comment.username %></p>
+                        <a href="#"><%= comment.author %></a>
                         <p><%= comment.text %></p>
                     </div> 
                  </div>
