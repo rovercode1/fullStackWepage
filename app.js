@@ -1,8 +1,10 @@
 const 
-express = require("express"),
-bodyParser = require("body-parser"),
-mongoose = require("mongoose"),
-methodOveride = require("method-override"),
+methodOverride	= require("method-override"),
+localStrategy			= require("passport-local"),
+bodyParser				= require("body-parser"),
+passport				= require("passport"),
+mongoose				= require("mongoose"),
+express 				= require("express"),
 app = express(),
 
 Product = require("./models/product"),
@@ -17,7 +19,27 @@ shopRoutes  = require("./routes/shop.js"),
 commentRoutes  = require("./routes/comments.js"),
 authRoutes  = require("./routes/index.js");
 
-// seedDB();
+// ============
+// PASSPORT CONFIG
+// ============
+app.use(require("express-session")({
+	secret:"Bjork is amazing",
+	resave:false,
+	saveUninitialized:false,
+}));
+// Start up passport
+// Start the session
+app.use(passport.initialize());
+app.use(passport.session());
+// Authenticating User's Schema.
+passport.use(new localStrategy(User.authenticate()));
+// Keeps session data small
+// Then deletes it
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+// seed
 // ============
 // APP CONFIG
 // ============
@@ -25,7 +47,7 @@ mongoose.connect("mongodb://localhost/shop_app");
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(methodOveride("_method"));
+app.use(methodOverride("_method"));
 
 app.use("/shop", shopRoutes);
 app.use("/shop",commentRoutes);
