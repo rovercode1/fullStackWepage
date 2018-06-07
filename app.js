@@ -58,7 +58,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 app.use("/shop", shopRoutes);
-app.use("/shop",commentRoutes);
+app.use("/shop/:id/comment",commentRoutes);
 app.use(authRoutes);
 
 app.listen(process.env.PORT, process.env.IP, function(){

@@ -1,5 +1,6 @@
 var express = require("express"),
-router = express.Router(),
+// Able to acsess :id
+router = express.Router({mergeParams:true}),
 Product	= require("../models/product"),
 Comment	= require("../models/comments");
 
@@ -7,7 +8,7 @@ Comment	= require("../models/comments");
 // NEW COMMENT FORM
 // ==========
 
-router.get("/:id/comment/new", isLoggedIn, function(req, res){
+router.get("/new", isLoggedIn, function(req, res){
   Product.findById(req.params.id, function(err, product){
     if(err){
       console.log(err);
@@ -21,7 +22,7 @@ router.get("/:id/comment/new", isLoggedIn, function(req, res){
 // POST NEW COMMENT
 // ==========
 
-router.post("/:id/comment", isLoggedIn,function(req ,res){
+router.post("/", isLoggedIn,function(req ,res){
   Product.findById(req.params.id, function (err, product) {
     if(err){
       console.log(err);
@@ -43,7 +44,7 @@ router.post("/:id/comment", isLoggedIn,function(req ,res){
 // EDIT COMMENT
 // ==========
 
-router.get("/:id/comment/:comment_id/edit",isLoggedIn, function(req, res){
+router.get("/:comment_id/edit",isLoggedIn, function(req, res){
   Product.findById(req.params.id, function(err, product){
     if(err){
       console.log(err);
@@ -63,7 +64,7 @@ router.get("/:id/comment/:comment_id/edit",isLoggedIn, function(req, res){
 // UPDATE COMMENT
 // ==========
 
-router.put("/:id/comment/:comment_id/edit",isLoggedIn, function(req, res){
+router.put("/:comment_id/edit",isLoggedIn, function(req, res){
   Product.findById(req.params.id, function(err, product){
     if(err){
       console.log(err);
@@ -83,7 +84,7 @@ router.put("/:id/comment/:comment_id/edit",isLoggedIn, function(req, res){
 // DELETE COMMENT
 // ==========
 
-router.delete("/:id/comment/:comment_id",isLoggedIn, function (req, res) {
+router.delete("/:comment_id",isLoggedIn, function (req, res) {
   Product.findById(req.params.id, function(err, product) {
       if(err){
         console.log(err);
