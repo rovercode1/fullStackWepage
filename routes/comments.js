@@ -27,12 +27,19 @@ router.post("/", isLoggedIn,function(req ,res){
     if(err){
       console.log(err);
     }else{
-      Comment.create(req.body.comment, function(err, comment){
+      Comment.create(req.body.comment, function(err, newComment){
         if(err){
           console.log(err);
         }else{
-          product.comments.push(comment);
+				// Add username and ID to comment
+  				newComment.author.id = req.user._id;
+  				newComment.author.username = req.user.username;
+  				// Save comment
+          newComment.save();
+          
+          product.comments.push(newComment);
           product.save();
+          console.log(newComment);
           res.redirect("/shop/"+req.params.id);
         }
       });

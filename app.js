@@ -39,7 +39,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-// seed
+// seedDB();
 
 // Middleware - adds currentUser var to every route
 // res.locals = what is avaliable in our template

@@ -41,25 +41,25 @@ function seedDB(){
 			console.log("Products removed");
 		}
 	});
-// Add a few Products
-  data.forEach(function(seed){
-    Product.create(seed, function(err, newProduct){
-      if(err){
-        console.log(err);
-      }else{
-        console.log("Product added!");
-        Comment.create({text:"I love this!", author:"Bjork"}, function(err, newComment){
-          if(err){
-            console.log(err);
-          }else{
-            newProduct.comments.push(newComment);
-            newProduct.save();
-            console.log("Comment added!");
-          }
-        });
-      }
-    });
-  });
+// // Add a few Products
+//   data.forEach(function(seed){
+//     Product.create(seed, function(err, newProduct){
+//       if(err){
+//         console.log(err);
+//       }else{
+//         console.log("Product added!");
+//         Comment.create({text:"I love this!", author:"Bjork"}, function(err, newComment){
+//           if(err){
+//             console.log(err);
+//           }else{
+//             newProduct.comments.push(newComment);
+//             newProduct.save();
+//             console.log("Comment added!");
+//           }
+//         });
+//       }
+//     });
+//   });
 }
 
 
