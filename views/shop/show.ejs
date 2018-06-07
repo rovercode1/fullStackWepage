@@ -10,11 +10,11 @@
       <div class="col-lg-4 col-sm-6">
         <div id="product-box">
           <div class="title">
-            <p><%= product.title %></p>
+            <p id="title"><%= product.title %></p>
           </div>
           <hr>
           <div>
-            <p>Condition: </p>
+            <p>Condition:</p>
           </div>
           <div>
             <div class="price">
@@ -30,7 +30,6 @@
               </form>
             </div>
           </div>
-          
           <div class="buttons">
             <button id="myBtn" class="btn btn-danger btn-sm">Delete</button>
             <a class="btn btn-warning btn-sm" href="/shop/<%= product._id %>/edit">Edit</a>
@@ -59,41 +58,41 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-8 col-md-12">
-        <div id="description">
-          <div id="desc">
-            <h3>Item description</h3> 
-            <p><%= product.desc  %></p>
+      <div id="tabShow">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="pills-desc-tab" data-toggle="pill" href="#pills-desc" role="tab" aria-controls="pills-desc" aria-selected="true">Item Description</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-rec-tab" data-toggle="pill" href="#pills-rec" role="tab" aria-controls="pills-rec" aria-selected="false">Recommended Products</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-desc" role="tabpanel" aria-labelledby="pills-desc-tab">
+              <div id="description">
+                <div id="desc">
+                  <h3>Item description</h3> 
+                  <p><%= product.desc  %></p>
+                </div>
+              </div>
+          </div>
+          <div class="tab-pane fade" id="pills-rec" role="tabpanel" aria-labelledby="pills-rec-tab">  
+              <div id="info-box">
+                <div id="recommendation">
+                  <p>People also bought: </p>
+                   <% function ranNum(){%>
+                     <% var ranNum = Math.floor(Math.random()*recProduct.length)%>
+                      <img src="<%=recProduct[ranNum].image%>">
+                      <h3 id="recTitle"><%=recProduct[ranNum].title%></h3>
+                      <%console.log(recProduct[ranNum]._id)%>
+                      <%console.log(product._id)%>
+                    <% } %>
+                    <% ranNum() %>
+                </div>
+              </div>
           </div>
         </div>
       </div>
-      <!--<div id="tabShow">-->
-      <!--  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">-->
-      <!--    <li class="nav-item">-->
-      <!--      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>-->
-      <!--    </li>-->
-      <!--    <li class="nav-item">-->
-      <!--      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>-->
-      <!--    </li>-->
-      <!--    <li class="nav-item">-->
-      <!--      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>-->
-      <!--    </li>-->
-      <!--  </ul>-->
-      <!--  <div class="tab-content" id="pills-tabContent">-->
-      <!--    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...</div>-->
-      <!--    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>-->
-      <!--    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>-->
-      <!--  </div>-->
-      <!--</div>-->
-    <div class="col-lg-4 col-sm-12">
-      <div id="info-box">
-        <div id="recommendation">
-          <p>People also bought: </p>
-          <div class="">
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="reviews">
       <div id="top-box">
         <a href="/shop/<%= product._id  %>/comment/new"class="btn btn-primary">Leave Review</a>

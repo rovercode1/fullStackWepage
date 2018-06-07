@@ -71,6 +71,11 @@
     border: 1px solid #d4d4d4;
   }
   
+  #recommendation img {
+    border: 1px solid #ddd;
+    max-width: 300px;
+  }
+  
   #top-box{
     display: flex;
     justify-content: flex-end;
@@ -84,6 +89,8 @@
       margin:0px;
     }
   }
+
+
   #description{
     width: 100%;
     background: #0000000a;
@@ -93,10 +100,13 @@
     }
   }
   
+  #tabShow{
+    margin-top:40px;
+  }
+  
   #info-box{
     width: 100%;
     background: #0000000a;
-    height: 300px;
     margin: 40px 0px;
     padding: 20px;
     border: 1px solid #ddd;

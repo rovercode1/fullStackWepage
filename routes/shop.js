@@ -44,17 +44,15 @@ router.get("/:id", function(req, res) {
     if(err){
       console.log(err);
     }else{
-        res.render("shop/show", {product:foundProduct});
       // Make random item recommendation
-      //  Product.find({}, function(err, products){
-      //     if(err){
-      //       console.log(err);
-      //    }else{
-      //       res.render("shop", {product:products});
-      //      var pLength = products.length;
-      //      console.log(Math.floor(Math.random()*pLength));
-      //   }
-      // });
+      // Later versions will use catagory to pick products
+        Product.find({}, function(err, recProducts){
+          if(err){
+            console.log(err);
+          }else{
+        res.render("shop/show", {product:foundProduct, recProduct:recProducts});
+        }
+      });
     }
   });
 });

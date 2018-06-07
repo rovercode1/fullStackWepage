@@ -4,10 +4,10 @@
    <h1>New Comment on: '<%= product.title %>'</h1>
     <form action="/shop/<%= product._id %>/comment" method="POST">
       <div class="form-group" >
-        <input class="form-control" type="text" name="comment[author]" placeholder="Enter Username" required>
+        <input class="form-control" min="1" max="15"type="text" name="comment[author]" placeholder="Enter Username" required>
       </div>
       <div class="form-group">
-        <input class="form-control"type="text" name="comment[text]"  placeholder="What's on your mind?"required>
+        <input class="form-control" min="1" max="140" type="text" name="comment[text]"  placeholder="What's on your mind?"required>
       </div>
     <button type="submit" class="btn btn-primary">Submit</button>
     </form>
