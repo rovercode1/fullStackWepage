@@ -10,10 +10,6 @@ router.get("/", function(req, res){
       console.log(err);
     }else{
       res.render("shop/shop", {product:products});
-      // // Random product
-      // var pLength = products.length;
-      // console.log(products[Math.floor(Math.random()*pLength)]);
-      // console.log(pLength);
     }
   });
 });

@@ -40,6 +40,14 @@ passport.deserializeUser(User.deserializeUser());
 
 
 // seed
+
+// Middleware - adds currentUser var to every route
+// res.locals = what is avaliable in our template
+app.use(function(req, res, next){
+	res.locals.currentUser = req.user;
+	next();
+});
+
 // ============
 // APP CONFIG
 // ============
