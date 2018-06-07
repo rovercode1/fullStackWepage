@@ -4,7 +4,7 @@ Product	= require("../models/product"),
 Comment	= require("../models/comments");
 
 // Get items from database
-router.get("/", function(req, res){
+router.get("/", isLoggedIn, function(req, res){
   Product.find({}, function(err, products){
     if(err){
       console.log(err);
@@ -16,13 +16,13 @@ router.get("/", function(req, res){
 // ============
 // NEW PRODUCT
 // ============
-router.get("/new", function(req, res){
+router.get("/new", isLoggedIn, function(req, res){
   res.render("shop/new");
 });
 // ============
 // POST NEW PRODUCT
 // ============
-router.post("/", function(req, res){
+router.post("/", isLoggedIn, function(req, res){
   Product.create(req.body.product, function (err, newProduct) {
     if(err){
       console.log(err);
@@ -34,7 +34,7 @@ router.post("/", function(req, res){
 // ============
 // SHOW MORE OF PRODUCT
 // ============
-router.get("/:id", function(req, res) {
+router.get("/:id", isLoggedIn, function(req, res) {
   // Populate - Finds the infomation in the comments id
   Product.findById(req.params.id).populate("comments").exec(function(err, foundProduct){
     if(err){
@@ -55,7 +55,7 @@ router.get("/:id", function(req, res) {
 // ============
 // EDIT PRODUCT
 // ============
-router.get("/:id/edit", function(req, res) {
+router.get("/:id/edit", isLoggedIn, function(req, res) {
   Product.findById(req.params.id, function(err, editProduct){
     if(err){
       console.log(err);
@@ -67,7 +67,7 @@ router.get("/:id/edit", function(req, res) {
 // ============
 // UPDATE PRODUCT
 // ============
-router.put("/:id", function(req, res) {
+router.put("/:id", isLoggedIn, function(req, res) {
   Product.findByIdAndUpdate(req.params.id, req.body.product, function (err, updatedProduct) {
     if(err){
       console.log(err);
@@ -79,7 +79,7 @@ router.put("/:id", function(req, res) {
 // ============
 // DELETE
 // ============
-router.delete("/:id", function(req, res) {
+router.delete("/:id", isLoggedIn, function(req, res) {
   Product.findByIdAndRemove(req.params.id, function(err, deletedProduct){
     if(err){
       console.log(err);
@@ -89,4 +89,11 @@ router.delete("/:id", function(req, res) {
   });
 });
 
+function isLoggedIn(req, res, next){
+  if(req.isAuthenticated()){
+    return next();
+  }
+  res.redirect("/login");
+};
+ isLoggedIn,
 module.exports = router;
