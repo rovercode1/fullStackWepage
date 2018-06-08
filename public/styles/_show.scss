@@ -76,6 +76,13 @@
     max-width: 300px;
   }
   
+  .rec-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
   #top-box{
     display: flex;
     justify-content: flex-end;
@@ -107,7 +114,6 @@
   #info-box{
     width: 100%;
     background: #0000000a;
-    margin: 40px 0px;
     padding: 20px;
     border: 1px solid #ddd;
   }

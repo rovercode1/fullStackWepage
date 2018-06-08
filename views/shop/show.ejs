@@ -14,7 +14,7 @@
           </div>
           <hr>
           <div>
-            <p>Condition:</p>
+            <p>Condition:<strong><%= product.condition  %></strong></p>
           </div>
           <div>
             <div class="price">
@@ -50,7 +50,7 @@
       <div class="col-lg-4 col-sm-6">
         <div id="info-box">
           <div class="user">
-            <p>Sold by : Username </p>
+            <p>Sold by : <a href="#"><%= product.author.username  %></a> </p>
             <p>User Rating: </p>
               <div class="stock">
                 <p>In stock: <%= product.quantity %></p>
@@ -80,12 +80,22 @@
               <div id="info-box">
                 <div id="recommendation">
                   <p>People also bought: </p>
+                  <div class="row">
                    <% function ranNum(){%>
                      <% var ranNum = Math.floor(Math.random()*recProduct.length)%>
-                      <img src="<%=recProduct[ranNum].image%>">
-                      <h3 id="recTitle"><%=recProduct[ranNum].title%></h3>
+                     <div class="col-lg-4 col-md-6 col-sm-4">
+                       <div class="rec-box">
+                         <div class="rec-img">
+                          <img src="<%=recProduct[ranNum].image%>">
+                         </div>
+                         <div class="rec-title">
+                          <a href="/shop/<%= recProduct[ranNum]._id %>"id="recTitle"><%=recProduct[ranNum].title%></a>
+                         </div>
+                       </div>
+                     </div>
                     <% } %>
                     <% ranNum() %>
+                  </div>
                 </div>
               </div>
           </div>
@@ -98,7 +108,7 @@
     <hr>
       <% product.comments.forEach(function(comment){%>
         <div class="comments">
-          <a href="#"><%=  comment.author %></a>
+          <a href="#"><%=  comment.author.username %></a>
           <p><%=  comment.text %></p>
           <div class="buttons">
             <form action="/shop/<%= product._id %>/comment/<%=  comment._id  %>?_method=DELETE" method="POST">

@@ -27,6 +27,11 @@ router.post("/", isLoggedIn, function(req, res){
     if(err){
       console.log(err);
     }else{
+      // Add username and ID to product
+      newProduct.author.id = req.user._id;
+      newProduct.author.username = req.user.username;
+      // Save product
+      newProduct.save();
       res.redirect("/shop");
     }
   });

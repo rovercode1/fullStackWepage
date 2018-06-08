@@ -129,6 +129,11 @@ body {
   #show #recommendation img {
     border: 1px solid #ddd;
     max-width: 300px; }
+  #show .rec-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
   #show #top-box {
     display: flex;
     justify-content: flex-end; }
@@ -149,7 +154,6 @@ body {
   #show #info-box {
     width: 100%;
     background: #0000000a;
-    margin: 40px 0px;
     padding: 20px;
     border: 1px solid #ddd; }
   #show #tabShow {
