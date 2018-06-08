@@ -51,7 +51,7 @@ router.get("/:id", isLoggedIn, function(req, res) {
           if(err){
             console.log(err);
           }else{
-        res.render("shop/show", {product:foundProduct, recProduct:recProducts});
+            res.render("shop/show", {product:foundProduct, recProduct:recProducts});
         }
       });
     }

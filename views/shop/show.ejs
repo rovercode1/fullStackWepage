@@ -81,20 +81,24 @@
                 <div id="recommendation">
                   <p>People also bought: </p>
                   <div class="row">
-                   <% function ranNum(){%>
-                     <% var ranNum = Math.floor(Math.random()*recProduct.length)%>
+                   <% var ranNum = Math.floor(Math.random()*recProduct.length)%>
                      <div class="col-lg-4 col-md-6 col-sm-4">
-                       <div class="rec-box">
-                         <div class="rec-img">
-                          <img src="<%=recProduct[ranNum].image%>">
-                         </div>
-                         <div class="rec-title">
-                          <a href="/shop/<%= recProduct[ranNum]._id %>"id="recTitle"><%=recProduct[ranNum].title%></a>
-                         </div>
-                       </div>
-                     </div>
-                    <% } %>
-                    <% ranNum() %>
+                        <div class="rec-box">
+                        <%function randomProduct(){%>
+                        
+                           <div class="rec-img">
+                            <img id="r-img"src="<%=recProduct[ranNum].image%>">
+                           </div>
+                           <div class="rec-title">
+                            <a id="r-title"href="/shop/<%= recProduct[ranNum]._id %>"id="recTitle"><%=recProduct[ranNum].title%></a>
+                           </div>
+                            <% if(recProduct[ranNum]._id.equals(product._id)){%>
+                              <% console.log("This is the same product!")%>
+                            <% } %>
+                          <% } %>
+                        <% randomProduct()  %>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
