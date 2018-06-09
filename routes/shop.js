@@ -1,10 +1,9 @@
 var express = require("express"),
 router = express.Router(),
-Product	= require("../models/product"),
-Comment	= require("../models/comments");
+Product	= require("../models/product");
 
 // Get items from database
-router.get("/", isLoggedIn, function(req, res){
+router.get("/", function(req, res){
   Product.find({}, function(err, products){
     if(err){
       console.log(err);
@@ -23,7 +22,7 @@ router.get("/new", isLoggedIn, function(req, res){
 // POST NEW PRODUCT
 // ============
 router.post("/", isLoggedIn, function(req, res){
-  Product.create(req.body.product, function (err, newProduct) {
+  Product.create(req.body.product, function (err, newProduct){
     if(err){
       console.log(err);
     }else{
@@ -39,23 +38,24 @@ router.post("/", isLoggedIn, function(req, res){
 // ============
 // SHOW MORE OF PRODUCT
 // ============
-router.get("/:id", isLoggedIn, function(req, res) {
-  // Populate - Finds the infomation in the comments id
-  Product.findById(req.params.id).populate("comments").exec(function(err, foundProduct){
-    if(err){
-      console.log(err);
-    }else{
-      // Make random item recommendation
-      // Later versions will use catagory to pick products
-        Product.find({}, function(err, recProducts){
-          if(err){
-            console.log(err);
-          }else{
-            res.render("shop/show", {product:foundProduct, recProduct:recProducts});
-        }
-      });
-    }
-  });
+
+//Show more infomation about the Blog 
+router.get("/:id", function(req, res) {
+	// Get Blog with provided ID
+	Product.findById(req.params.id).populate("comments").exec( function(err, foundProduct){
+		if(err){
+			console.log(err);
+		}else{
+		  Product.find({}, function(err, recProducts){
+		    if(err){
+		      console.log(err);
+		    }else{
+    	// Render more infomation on that Blog
+        res.render("shop/show", {product:foundProduct, recProduct:recProducts});
+		    }
+		  });
+		}
+	});
 });
 // ============
 // EDIT PRODUCT
@@ -99,6 +99,6 @@ function isLoggedIn(req, res, next){
     return next();
   }
   res.redirect("/login");
-};
- isLoggedIn,
+}
+
 module.exports = router;

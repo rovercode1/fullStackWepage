@@ -149,17 +149,14 @@ body {
     margin: 40px 0px; }
     #show #description #desc {
       padding: 20px; }
-  #show #tabShow {
-    margin-top: 40px; }
   #show #info-box {
     width: 100%;
     background: #0000000a;
     padding: 20px;
     border: 1px solid #ddd; }
-  #show #tabShow {
-    width: 100%;
-    border: 1px solid #d2cfcf;
-    padding: 20px;
+  #show #tab-box {
+    border: 1px solid #ddd;
+    padding: 30px;
     border-radius: 5px; }
 
 /* The Modal (background) */
