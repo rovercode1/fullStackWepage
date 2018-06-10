@@ -114,25 +114,15 @@
   <p><%=  comment.text %></p>
    <%  if(currentUser && comment.author.id.equals(currentUser._id)) {%>
 <div class="buttons">
-  <button id="myBtn" class="btn btn-danger btn-sm">Delete</button>
-  <!-- The Modal -->
-  <div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>Are you sure your want to delete this comment?</p>
-      <form action="/shop/<%= product._id %>/comment/<%=  comment._id  %>?_method=DELETE" method="POST">
-        <button type="submit" class="btn btn-danger">Yes</button>
-      </form>
-    </div>
-  </div>
-<a class="btn btn-warning btn-sm"href="/shop/<%=  product._id %>/comment/<%= comment._id  %>/edit">Edit</a>
+  <form action="/shop/<%= product._id %>/comment/<%=  comment._id  %>?_method=DELETE" method="POST">
+    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+  </form>
+  <a class="btn btn-warning btn-sm" href="/shop/<%=  product._id %>/comment/<%= comment._id  %>/edit">Edit</a>
 </div>
   <% }%>
   <hr>
 </div> 
 <% }) %>
-
 </div>
 </div>
 </section>
