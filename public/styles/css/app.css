@@ -30,9 +30,7 @@
 #shop .col-lg-3.col-md-4.col-sm-6.col-xs-6 {
   padding: 0px; }
 #shop .products {
-  border: 1px solid #e5e5e5;
   padding: 0px 5px;
-  margin: 10px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,8 +41,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.2s;
-  border-bottom: 1px solid #ddd; }
+  transition: 0.2s; }
   #shop .image:hover {
     opacity: 0.8; }
   #shop .image #productImage {
@@ -64,9 +61,21 @@
   display: flex; }
   #shop form button {
     max-width: 200px; }
+#shop .row {
+  border-left: 1px solid #ddd; }
+#shop .col-lg-3.col-md-4.col-sm-6.col-xs-6 {
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd; }
 @media (max-width: 1200px) {
   #shop .container {
-    max-width: 100%; } }
+    max-width: 100%; }
+  #shop .col-lg-3.col-md-4.col-sm-6.col-xs-6:nth-child(1) {
+    border-top: 1px solid #ddd; }
+  #shop .col-lg-3.col-md-4.col-sm-6.col-xs-6:nth-child(2), #shop .col-lg-3.col-md-4.col-sm-6.col-xs-6:nth-child(3), #shop .col-lg-3.col-md-4.col-sm-6.col-xs-6:nth-child(4) {
+    border: 0px;
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd; } }
 @media (max-width: 768px) {
   #shop .container {
     max-width: 512px; } }
@@ -149,17 +158,14 @@ body {
     margin: 40px 0px; }
     #show #description #desc {
       padding: 20px; }
-  #show #tabShow {
-    margin-top: 40px; }
   #show #info-box {
     width: 100%;
     background: #0000000a;
     padding: 20px;
     border: 1px solid #ddd; }
-  #show #tabShow {
-    width: 100%;
-    border: 1px solid #d2cfcf;
-    padding: 20px;
+  #show #tab-box {
+    border: 1px solid #ddd;
+    padding: 30px;
     border-radius: 5px; }
 
 /* The Modal (background) */

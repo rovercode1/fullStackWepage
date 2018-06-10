@@ -1,10 +1,10 @@
 var express = require("express"),
 router = express.Router(),
-Product	= require("../models/product"),
-Comment	= require("../models/comments");
+middleware = require("../middleware"),
+Product	= require("../models/product");
 
 // Get items from database
-router.get("/", isLoggedIn, function(req, res){
+router.get("/", function(req, res){
   Product.find({}, function(err, products){
     if(err){
       console.log(err);
@@ -16,14 +16,14 @@ router.get("/", isLoggedIn, function(req, res){
 // ============
 // NEW PRODUCT
 // ============
-router.get("/new", isLoggedIn, function(req, res){
+router.get("/new", middleware.isLoggedIn, function(req, res){
   res.render("shop/new");
 });
 // ============
 // POST NEW PRODUCT
 // ============
-router.post("/", isLoggedIn, function(req, res){
-  Product.create(req.body.product, function (err, newProduct) {
+router.post("/", middleware.isLoggedIn, function(req, res){
+  Product.create(req.body.product, function (err, newProduct){
     if(err){
       console.log(err);
     }else{
@@ -39,28 +39,29 @@ router.post("/", isLoggedIn, function(req, res){
 // ============
 // SHOW MORE OF PRODUCT
 // ============
-router.get("/:id", isLoggedIn, function(req, res) {
-  // Populate - Finds the infomation in the comments id
-  Product.findById(req.params.id).populate("comments").exec(function(err, foundProduct){
-    if(err){
-      console.log(err);
-    }else{
-      // Make random item recommendation
-      // Later versions will use catagory to pick products
-        Product.find({}, function(err, recProducts){
-          if(err){
-            console.log(err);
-          }else{
+
+//Show more infomation about the Blog 
+router.get("/:id", function(req, res) {
+	// Get Blog with provided ID
+	Product.findById(req.params.id).populate("comments").exec( function(err, foundProduct){
+		if(err){
+			console.log(err);
+		}else{
+		  Product.find({}, function(err, recProducts){
+		    if(err){
+		      console.log(err);
+		    }else{
+    	// Render more infomation on that Blog
         res.render("shop/show", {product:foundProduct, recProduct:recProducts});
-        }
-      });
-    }
-  });
+		    }
+		  });
+		}
+	});
 });
 // ============
 // EDIT PRODUCT
 // ============
-router.get("/:id/edit", isLoggedIn, function(req, res) {
+router.get("/:id/edit", middleware.checkProductOwnership, function(req, res) {
   Product.findById(req.params.id, function(err, editProduct){
     if(err){
       console.log(err);
@@ -72,7 +73,7 @@ router.get("/:id/edit", isLoggedIn, function(req, res) {
 // ============
 // UPDATE PRODUCT
 // ============
-router.put("/:id", isLoggedIn, function(req, res) {
+router.put("/:id",middleware.checkProductOwnership, function(req, res) {
   Product.findByIdAndUpdate(req.params.id, req.body.product, function (err, updatedProduct) {
     if(err){
       console.log(err);
@@ -84,7 +85,7 @@ router.put("/:id", isLoggedIn, function(req, res) {
 // ============
 // DELETE
 // ============
-router.delete("/:id", isLoggedIn, function(req, res) {
+router.delete("/:id", middleware.checkProductOwnership, function(req, res) {
   Product.findByIdAndRemove(req.params.id, function(err, deletedProduct){
     if(err){
       console.log(err);
@@ -94,11 +95,4 @@ router.delete("/:id", isLoggedIn, function(req, res) {
   });
 });
 
-function isLoggedIn(req, res, next){
-  if(req.isAuthenticated()){
-    return next();
-  }
-  res.redirect("/login");
-};
- isLoggedIn,
 module.exports = router;

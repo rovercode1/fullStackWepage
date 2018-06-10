@@ -1,132 +1,130 @@
 <% include ../partials/header %>
 <section id="show">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4 col-sm-12">
-        <div class="image">
-          <img src="<%= product.image %>">
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6">
-        <div id="product-box">
-          <div class="title">
-            <p id="title"><%= product.title %></p>
-          </div>
-          <hr>
-          <div>
-            <p>Condition:<strong><%= product.condition  %></strong></p>
-          </div>
-          <div>
-            <div class="price">
-              <p>£<%= product.price %>.00</p>
-            </div>
-            <form action="/bag/:user" method="POST">
-            <div class="quantity">
-             <p>Quantity </p>
-             <input name="product[quantity]"class="form-control"type="number" min="1" max="<%=  product.quantity %>" required>
-            </div>
-            <div class="cart">
-                <button class="btn btn-success">ADD TO BAG</button>
-              </form>
-            </div>
-          </div>
-          <div class="buttons">
-            <button id="myBtn" class="btn btn-danger btn-sm">Delete</button>
-            <a class="btn btn-warning btn-sm" href="/shop/<%= product._id %>/edit">Edit</a>
-            <!-- The Modal -->
-              <div id="myModal" class="modal">
-              <!-- Modal content -->
-                <div class="modal-content">
-                  <span class="close">&times;</span>
-                  <p>Are you sure your want to delete this product?</p>
-                  <form action="/shop/<%= product._id %>?_method=DELETE" method="POST">
-                    <button type="submit" class="btn btn-danger">Yes</button>
-                </form>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6">
-        <div id="info-box">
-          <div class="user">
-            <p>Sold by : <a href="#"><%= product.author.username  %></a> </p>
-            <p>User Rating: </p>
-              <div class="stock">
-                <p>In stock: <%= product.quantity %></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="tabShow">
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="pills-desc-tab" data-toggle="pill" href="#pills-desc" role="tab" aria-controls="pills-desc" aria-selected="true">Item Description</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-rec-tab" data-toggle="pill" href="#pills-rec" role="tab" aria-controls="pills-rec" aria-selected="false">Recommended Products</a>
-          </li>
-        </ul>
-        <div class="tab-content" id="pills-tabContent">
-          <div class="tab-pane fade show active" id="pills-desc" role="tabpanel" aria-labelledby="pills-desc-tab">
-              <div id="description">
-                <div id="desc">
-                  <h3>Item description</h3> 
-                  <p><%= product.desc  %></p>
-                </div>
-              </div>
-          </div>
-          <div class="tab-pane fade" id="pills-rec" role="tabpanel" aria-labelledby="pills-rec-tab">  
-              <div id="info-box">
-                <div id="recommendation">
-                  <p>People also bought: </p>
-                  <div class="row">
-                   <% function ranNum(){%>
-                     <% var ranNum = Math.floor(Math.random()*recProduct.length)%>
-                     <div class="col-lg-4 col-md-6 col-sm-4">
-                       <div class="rec-box">
-                         <div class="rec-img">
-                          <img src="<%=recProduct[ranNum].image%>">
-                         </div>
-                         <div class="rec-title">
-                          <a href="/shop/<%= recProduct[ranNum]._id %>"id="recTitle"><%=recProduct[ranNum].title%></a>
-                         </div>
-                       </div>
-                     </div>
-                    <% } %>
-                    <% ranNum() %>
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-    <div class="reviews">
-      <div id="top-box">
-        <a href="/shop/<%= product._id  %>/comment/new"class="btn btn-primary">Leave Review</a>
-      </div>
-    <hr>
-      <% product.comments.forEach(function(comment){%>
-        <div class="comments">
-          <a href="#"><%=  comment.author.username %></a>
-          <p><%=  comment.text %></p>
-          <div class="buttons">
-            <form action="/shop/<%= product._id %>/comment/<%=  comment._id  %>?_method=DELETE" method="POST">
-              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-            </form>
-            <a class="btn btn-warning btn-sm"href="/shop/<%=  product._id %>/comment/<%= comment._id  %>/edit">Edit</a>
-          </div>
-        <hr>
-        </div> 
-      <% }) %>
-    </div>
+<div class="container">
+<div class="row">
+  
+  <div class="col-lg-4 col-sm-12">
+    <div class="image">
+      <img src="<%= product.image %>">
     </div>
   </div>
-  </form>
+<div class="col-lg-4 col-sm-6">
+  <div id="product-box">
+    <div class="title">
+      <p id="title"><%= product.title %></p>
+    </div>
+    <hr>
+    <div>
+      <p>Condition:<strong><%= product.condition  %></strong></p>
+    </div>
+    <div>
+      <div class="price">
+        <p>£<%= product.price %>.00</p>
+      </div>
+      <form action="/bag/:user" method="POST">
+        <div class="quantity">
+          <p>Quantity </p>
+          <input name="product[quantity]"class="form-control"type="number" min="1" max="<%=  product.quantity %>" required>
+        </div>
+        <div class="cart">
+          <button class="btn btn-success">ADD TO BAG</button>
+      </form>
+      </div>
+    </div>
+    <%  if(currentUser && product.author.id.equals(currentUser._id)) {%>
+      <div class="buttons">
+        <button id="myBtn" class="btn btn-danger btn-sm">Delete</button>
+        <a class="btn btn-warning btn-sm" href="/shop/<%= product._id %>/edit">Edit</a>
+      <!-- The Modal -->
+        <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Are you sure your want to delete this product?</p>
+          <form action="/shop/<%= product._id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-danger">Yes</button>
+          </form>
+          </div>
+        </div>
+      </div>
+    <% } %>
   </div>
 </div>
-
-
+<div class="col-lg-4 col-sm-6">
+  <div id="info-box">
+    <div class="user">
+      <p>Sold by : <a href="#"><%= product.author.username  %></a> </p>
+      <p>User Rating: </p>
+      <div class="stock">
+      <p>In stock: <%= product.quantity %></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!--End of row--> 
+<div id="tab-box">
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Product Description</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Recommended</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <div id="desc">
+      <h3>Product description</h3> 
+      <p><%= product.desc  %></p>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <div id="info-box">
+        <div id="recommendation">
+          <p>People also bought: </p>
+          <div class="row">
+            <%function randomProduct(){%>
+            <% var ranNum = Math.floor(Math.random()*recProduct.length)%>
+              <div class="col-lg-4 col-md-6 col-sm-4">
+              <div class="rec-box">
+                <div class="rec-img">
+                  <img id="r-img"src="<%=recProduct[ranNum].image%>">
+                </div>
+                <div class="rec-title">
+                  <a id="r-title"href="/shop/<%= recProduct[ranNum]._id %>"id="recTitle"><%=recProduct[ranNum].title%></a>
+                </div>
+              </div>
+              </div>
+            <% } %>
+            <% randomProduct()  %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="reviews">
+<div id="top-box">
+  <a href="/shop/<%= product._id  %>/comment/new"class="btn btn-primary">Leave Review</a>
+</div>
+<hr>
+<% product.comments.forEach(function(comment){%>
+<div class="comments">
+  <a href="#"><%=  comment.author.username %></a>
+  <p><%=  comment.text %></p>
+   <%  if(currentUser && comment.author.id.equals(currentUser._id)) {%>
+<div class="buttons">
+  <form action="/shop/<%= product._id %>/comment/<%=  comment._id  %>?_method=DELETE" method="POST">
+    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+  </form>
+  <a class="btn btn-warning btn-sm" href="/shop/<%=  product._id %>/comment/<%= comment._id  %>/edit">Edit</a>
+</div>
+  <% }%>
+  <hr>
+</div> 
+<% }) %>
+</div>
+</div>
 </section>
 
 <% include ../partials/footer %>

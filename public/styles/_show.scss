@@ -107,9 +107,6 @@
     }
   }
   
-  #tabShow{
-    margin-top:40px;
-  }
   
   #info-box{
     width: 100%;
@@ -117,11 +114,10 @@
     padding: 20px;
     border: 1px solid #ddd;
   }
+  #tab-box{
+    border: 1px solid #ddd;
+    padding: 30px;
+    border-radius: 5px;
+  }  
   
-  #tabShow{
-    width: 100%;  
-    border: 1px solid #d2cfcf;
-    padding: 20px;
-    border-radius: 5px;   
-  }
 }
