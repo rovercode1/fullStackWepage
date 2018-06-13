@@ -107,39 +107,4 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function (req, r
   });
 });
 
-// // Checks if user can edit comment
-// function checkCommentOwnershipEdit(req, res, next){
-// 	if(req.isAuthenticated()){
-		
-// 		Product.findById(req.params.id, function(err, product){
-// 			if(err){
-// 				console.log(err);
-// 			}else{
-// 				Comment.findById(req.params.comment_id, function(err, comment){
-// 					if(err){
-// 						console.log(err);
-// 					}else{
-// 						if(req.user._id.equals(comment.author.id)){
-// 							next();
-							
-// 						}else{
-// 							res.redirect("/blogs/"+req.params.id);
-// 						}
-// 					}
-// 				});
-// 			}
-// 		});
-		
-// 	}else{
-// 		res.redirect("/login");
-// 	}
-// }
-
-// function isLoggedIn(req, res, next){
-//   if(req.isAuthenticated()){
-//     return next();
-//   }
-//   res.redirect("/login");
-// }
-
 module.exports = router;
