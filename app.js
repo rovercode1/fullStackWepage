@@ -5,6 +5,7 @@ bodyParser				= require("body-parser"),
 passport				= require("passport"),
 mongoose				= require("mongoose"),
 express 				= require("express"),
+flash				= require("connect-flash"),
 app = express(),
 
 Product = require("./models/product"),
