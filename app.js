@@ -5,13 +5,10 @@ bodyParser				= require("body-parser"),
 passport				= require("passport"),
 mongoose				= require("mongoose"),
 express 				= require("express"),
-flash				= require("connect-flash"),
-app = express(),
+flash					= require("connect-flash"),
+app 					= express(),
 
-Product = require("./models/product"),
-Comment = require("./models/comments"),
 User = require("./models/user"),
-seedDB	= require("./seeds"),
 
 // ============
 // ROUTES
@@ -38,9 +35,6 @@ passport.use(new localStrategy(User.authenticate()));
 // Then deletes it
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
-
-// seedDB();
 
 // Middleware - adds currentUser var to every route
 // res.locals = what is avaliable in our template
