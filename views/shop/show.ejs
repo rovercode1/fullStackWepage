@@ -55,7 +55,8 @@
     <div class="user">
       <p>Sold by : <a href="#"><%= product.author.username  %></a> </p>
       <p>User Rating: </p>
-      <p>Overall Rating: <%   %></p>
+
+        <%  overallRating() %>
       <div class="stock">
       <p>In stock: <%= product.quantity %></p>
       </div>
@@ -84,19 +85,6 @@
         <div id="recommendation">
           <p>People also bought: </p>
           <div class="row">
-            <%function randomProduct(){%>
-            <% var ranNum = Math.floor(Math.random()*recProduct.length)%>
-              <div class="col-lg-4 col-md-6 col-sm-4">
-                <div class="rec-box">
-                  <div class="rec-img">
-                    <img id="r-img"src="<%=recProduct[ranNum].image%>">
-                  </div>
-                  <div class="rec-title">
-                    <a id="r-title"href="/shop/<%= recProduct[ranNum]._id %>"id="recTitle"><%=recProduct[ranNum].title%></a>
-                  </div>
-                </div>
-              </div>
-            <% } %>
             <% randomProduct()  %>
           </div>
         </div>
@@ -129,14 +117,34 @@
 </div>
 </div>
 </section>
-<% function overallRating(){%>
+
+<!--====================-->
+<!--FUNCTIONS-->
+<!--====================-->
+<section>
+  <% function overallRating(){%>
   <%  let sum = 0 %>
-<% product.comments.forEach(function(comment){%>
+  <% product.comments.forEach(function(comment){%>
   <% sum += comment.rating   %>
-<%  }) %>
-  <% console.log(sum)  %>
+  <%  }) %>
   <% let result = sum / product.comments.length  %>
-  <% console.log(result)  %>
-<% }%>
-<%  overallRating() %>
+  <p>Overall Rating: <%= result%></p>
+  <% }%>
+  
+  
+  <%function randomProduct(){%>
+  <% var ranNum = Math.floor(Math.random()*recProduct.length)%>
+  <div class="col-lg-4 col-md-6 col-sm-4">
+  <div class="rec-box">
+  <div class="rec-img">
+  <img id="r-img"src="<%=recProduct[ranNum].image%>">
+  </div>
+  <div class="rec-title">
+  <a id="r-title"href="/shop/<%= recProduct[ranNum]._id %>"id="recTitle"><%=recProduct[ranNum].title%></a>
+  </div>
+  </div>
+  </div>
+  <% } %>
+  
+</section>
 <% include ../partials/footer %>
