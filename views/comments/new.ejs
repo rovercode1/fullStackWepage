@@ -1,7 +1,6 @@
 <% include ../partials/header %>
 <section id="new">
   <div class="container">
-   <h1>New Comment on: '<%= product.title %>'</h1>
     <form action="/shop/<%= product._id %>/comment" method="POST">
       <div class="form-group">
         <input class="form-control" min="1" max="140" type="text" name="comment[text]"  placeholder="What's on your mind?"required>
