@@ -1,7 +1,7 @@
 {
   "name": "shopapp",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "First is my first solo full stack project. The end goal is to become more familair with the relationship between frontend and backend programming.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,6 +18,7 @@
   "homepage": "https://github.com/rovercode1/fullStackShopApp#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
@@ -29,5 +30,10 @@
     "passport-local-mongoose": "^5.0.0",
     "syntax-error": "^1.4.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "keywords": [
+    "Express",
+    "Shop",
+    "App"
+  ]
 }
