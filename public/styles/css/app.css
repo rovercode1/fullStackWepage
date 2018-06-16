@@ -169,6 +169,38 @@ body {
     padding: 30px;
     border-radius: 5px; }
 
+#search input {
+  width: 100%; }
+#search .product {
+  margin: 10px 0px;
+  width: 100%;
+  border: 1px solid;
+  padding: 10px;
+  display: flex;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px; }
+#search .image {
+  max-width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  #search .image img {
+    max-height: 100%;
+    max-width: 100%; }
+#search #productDesc {
+  padding: 10px;
+  width: 50%;
+  display: flex;
+  flex-direction: column; }
+  #search #productDesc p {
+    margin: 0px; }
+@media (max-width: 768px) {
+  #search #productBox {
+    flex-direction: column;
+    align-items: center; }
+  #search #productDesc {
+    width: 100%; } }
+
 /* The Modal (background) */
 .modal {
   display: none;
