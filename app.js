@@ -17,6 +17,7 @@ shopRoutes  = require("./routes/shop.js"),
 commentRoutes  = require("./routes/comments.js"),
 authRoutes  = require("./routes/index.js");
 
+
 // ============
 // PASSPORT CONFIG
 // ============

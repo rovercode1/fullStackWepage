@@ -30,5 +30,6 @@ var productSchema = new mongoose.Schema({
       ref:"Comment",
     }
   ],
+  
 });
 module.exports =  mongoose.model("Product", productSchema);

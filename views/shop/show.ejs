@@ -55,6 +55,7 @@
     <div class="user">
       <p>Sold by : <a href="#"><%= product.author.username  %></a> </p>
       <p>User Rating: </p>
+      <p>Overall Rating: <%   %></p>
       <div class="stock">
       <p>In stock: <%= product.quantity %></p>
       </div>
@@ -85,7 +86,7 @@
           <div class="row">
             <%function randomProduct(){%>
             <% var ranNum = Math.floor(Math.random()*recProduct.length)%>
-                <div class="col-lg-4 col-md-6 col-sm-4">
+              <div class="col-lg-4 col-md-6 col-sm-4">
                 <div class="rec-box">
                   <div class="rec-img">
                     <img id="r-img"src="<%=recProduct[ranNum].image%>">
@@ -94,7 +95,7 @@
                     <a id="r-title"href="/shop/<%= recProduct[ranNum]._id %>"id="recTitle"><%=recProduct[ranNum].title%></a>
                   </div>
                 </div>
-                </div>
+              </div>
             <% } %>
             <% randomProduct()  %>
           </div>
@@ -108,21 +109,34 @@
     <a href="/shop/<%= product._id  %>/comment/new"class="btn btn-primary">Leave Review</a>
   </div>
 <hr>
+
 <% product.comments.forEach(function(comment){%>
   <div class="comments">
+    <p>Rating: <%= comment.rating  %></p>
     <a href="#"><%=  comment.author.username %></a>
     <p><%=  comment.text %></p>
+    <%  if(currentUser && comment.author.id.equals(currentUser._id)){%>
       <div class="buttons">
         <form action="/shop/<%= product._id %>/comment/<%=  comment._id  %>?_method=DELETE" method="POST">
           <button type="submit" class="btn btn-danger btn-sm">Delete</button>
         </form>
       <a class="btn btn-warning btn-sm" href="/shop/<%=  product._id %>/comment/<%= comment._id  %>/edit">Edit</a>
       </div>
+    <% }%>
     <hr>
   </div> 
 <% }) %>
 </div>
 </div>
 </section>
-
+<% function overallRating(){%>
+  <%  let sum = 0 %>
+<% product.comments.forEach(function(comment){%>
+  <% sum += comment.rating   %>
+<%  }) %>
+  <% console.log(sum)  %>
+  <% let result = sum / product.comments.length  %>
+  <% console.log(result)  %>
+<% }%>
+<%  overallRating() %>
 <% include ../partials/footer %>
