@@ -33,6 +33,21 @@ router.get("/search", function(req, res){
 });
 
 // ============
+// USER PAGE
+// ============
+
+router.get("/usr/:user_id", function(req, res){
+  User.findById(req.params.user_id, function(err, foundUser){
+    if(err){
+      console.log(err);
+    }else{
+      res.render("index/user", { user:foundUser});
+    }
+  });
+});
+
+
+// ============
 // REGISTER FORM
 // ============
 
