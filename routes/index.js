@@ -21,7 +21,13 @@ router.get("/search", function(req, res){
     if(err){
       console.log(err);
     }else{
-      res.render("index/search", {product:foundProduct});
+      User.find({}, function(err, foundUser){
+        if(err){
+          console.log(err);
+        }else{
+          res.render("index/search", {product:foundProduct, users:foundUser});
+        }
+      });
     }
   });
 });
