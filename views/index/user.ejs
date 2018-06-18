@@ -1,5 +1,25 @@
 <% include ../partials/header %>
-
-  <h1><%= user.username %></h1>
+<section id="user">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div id="userBox">
+          <div id="user-left">
+              <h4><%= user.username  %></h4>
+          </div>
+          <div id="user-right">
+            <h4>Items for sale</h4>
+            <div>
+              <% products.forEach(function(product){%>
+                <p><%= product.title  %></p>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
     
 <% include ../partials/footer %>

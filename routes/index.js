@@ -35,13 +35,26 @@ router.get("/search", function(req, res){
 // ============
 // USER PAGE
 // ============
-
 router.get("/usr/:user_id", function(req, res){
-  User.findById(req.params.user_id, function(err, foundUser){
+  User.findOne({username:req.params.user_id}, function(err, user){
     if(err){
       console.log(err);
     }else{
-      res.render("index/user", { user:foundUser});
+    Product.findOne({'author.username':user.username}, function(err, product){
+      if(err){
+        console.log(err);
+      }else{
+       console.log(product.author.id);
+       Product.find({'author.id':product.author.id}, function(err, foundProduct){
+         if(err){
+           console.log(err);
+         }else{
+           console.log(foundProduct);
+          res.render('index/user',{products:foundProduct, user:product.author});
+         }
+       });
+      }
+    });
     }
   });
 });
