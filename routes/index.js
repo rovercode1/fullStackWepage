@@ -33,42 +33,6 @@ router.get("/search", function(req, res){
 });
 
 // ============
-// USER PAGE
-// ============
-router.get("/usr/:user_id", function(req, res){
-  // Gets the user id.
-  User.findOne({username:req.params.user_id}, function(err, user){
-    if(err){
-      console.log(err);
-    }else{
-      // Gets one product from that user.
-    Product.findOne({'author.username':user.username}, function(err, product){
-      if(err){
-        console.log(err);
-      }else{
-        // If the user has no products...
-        if(product == null){
-          return res.send('This user has no products.');
-        }
-       console.log(product.author.id);
-      // Find all the products from that user.
-       Product.find({'author.id':product.author.id}, function(err, foundProduct){
-         if(err){
-           console.log(err);
-           console.log("Something went wrong!");
-         }else{
-           console.log(foundProduct);
-          res.render('index/user',{products:foundProduct, user:product.author, noProductUser:user});
-         }
-       });
-      }
-    });
-    }
-  });
-});
-
-
-// ============
 // REGISTER FORM
 // ============
 
