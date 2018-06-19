@@ -201,6 +201,36 @@ body {
   #search #productDesc {
     width: 100%; } }
 
+#user {
+  margin-top: 50px; }
+  #user .container {
+    width: 80%; }
+  #user #profileBox {
+    background: #f4f4f4;
+    padding: 30px;
+    border: 1px solid #ddd; }
+  #user #user-left {
+    display: flex; }
+    #user #user-left h4 {
+      padding: 30px 10px; }
+  #user #image {
+    border: 1px solid #ddd;
+    padding: 5px; }
+  #user #user-right {
+    margin-right: 80px; }
+  #user #nav {
+    display: flex;
+    justify-content: flex-end; }
+    #user #nav ul li {
+      display: inline; }
+  #user #products h4 {
+    color: #919191;
+    text-align: center;
+    margin: 20px 0px; }
+  @media (max-width: 1200px) {
+    #user .container {
+      width: 90%; } }
+
 /* The Modal (background) */
 .modal {
   display: none;
