@@ -1,0 +1,51 @@
+#user{
+  margin-top:50px;
+  .container{
+    width:80%;
+  }
+  #profileBox{
+    background: #f4f4f4;
+    padding: 30px;
+    border: 1px solid #ddd;
+  }
+  
+  #user-left{
+    display: flex;
+    h4{
+      padding: 30px 10px;
+    }
+  }
+  
+  #image{
+    border: 1px solid #ddd;
+    padding: 5px;
+  }
+  
+  #user-right{
+    margin-right: 80px;
+  }
+  
+  #nav{
+    display: flex;
+    justify-content: flex-end;
+    ul li{
+      display:inline;
+    }
+  }
+  
+  #products{
+    h4{
+      color: #919191;
+      text-align:center;
+      margin: 20px 0px;
+    }
+  }
+  
+  @media(max-width:1200px){
+    .container{
+      width:90%;
+    }
+  }
+  
+  
+}

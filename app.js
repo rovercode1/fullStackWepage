@@ -15,7 +15,9 @@ User = require("./models/user"),
 // ============
 shopRoutes  = require("./routes/shop.js"),
 commentRoutes  = require("./routes/comments.js"),
+userRoutes  = require("./routes/user.js"),
 authRoutes  = require("./routes/index.js");
+
 
 // ============
 // PASSPORT CONFIG
@@ -53,6 +55,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 app.use("/shop", shopRoutes);
+app.use("/usr", userRoutes);
 app.use("/shop/:id/comment",commentRoutes);
 app.use(authRoutes);
 

@@ -1,7 +1,7 @@
 const express = require("express"),
 passport				= require("passport"),
-localStrategy			= require("passport-local"),
 User = require("../models/user"),
+Product = require("../models/product"),
 router = express.Router();
 
 // ============
@@ -10,6 +10,26 @@ router = express.Router();
 
 router.get("/", function(req, res){
   res.render("index/index");
+});
+
+// ============
+// SEARCH PAGE
+// ============
+
+router.get("/search", function(req, res){
+  Product.find({}, function(err, foundProduct){
+    if(err){
+      console.log(err);
+    }else{
+      User.find({}, function(err, foundUser){
+        if(err){
+          console.log(err);
+        }else{
+          res.render("index/search", {product:foundProduct, users:foundUser});
+        }
+      });
+    }
+  });
 });
 
 // ============
@@ -62,8 +82,8 @@ router.post("/login", passport.authenticate("local",{
 
 router.get("/logout", function(req, res) {
     req.logout();
-    res.redirect("/")
-})
+    res.redirect("/");
+});
 
 // ============
 // PAGE NOT FOUND

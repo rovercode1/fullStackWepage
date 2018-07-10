@@ -1,0 +1,49 @@
+<% include ../partials/header %>
+<section id="user">
+  <div class="container">
+    <div class="row" id="profileBox">
+      <div class="col-lg-4">
+        <div class="buttons">
+          <a href="/usr/<% user.username  %>/edit"></a>
+        </div>
+        <div id="userBox">
+          <div id="user-left">
+            <div id="image">
+              <img src="https://www.fillmurray.com/200/200">
+            </div>
+              <h4><%= user.username  %></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div id="user-right">
+          <div id="nav">
+            <ul>
+              <li><a href="#"></a>Link</li>
+              <li><a href="#"></a>Link</li>
+              <li><a href="#"></a>Link</li>
+              <li><a href="#"></a>Link</li>
+            </ul>
+          </div>
+          <div id="about">
+            <h4><%= user.about  %></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="products">
+      <h1 class="text-center">Items for sale</h1>
+      <%  if(noProduct == null){%>
+        <h4> This user currently has no products.</h4>
+      <% }else{%>
+        <div>
+          <% products.forEach(function(product){%>
+          <p><%= product.title  %></p>
+          <% }) %>
+        <%  } %>
+        </div>
+    </div>
+  </div>
+</section>
+    
+<% include ../partials/footer %>

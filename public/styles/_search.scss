@@ -1,0 +1,44 @@
+#search{
+  input{
+    width:100%;
+  }
+  .product{
+    margin:10px 0px;
+    width: 100%;
+    border: 1px solid;
+    padding: 10px;
+    display: flex;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+  }  
+  .image{
+    max-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+    max-height: 100%;
+    max-width: 100%;
+    }  
+  }
+    #productDesc{
+      padding:10px;
+      width: 50%;
+      display:flex;
+      flex-direction:column;
+      p{
+        margin:0px;
+      }
+    }
+    
+    @media(max-width:768px){
+      #productBox{
+        flex-direction: column;
+        align-items: center;
+      }
+      #productDesc{
+        width:100%;
+      }
+    }
+    
+}

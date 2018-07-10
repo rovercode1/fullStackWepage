@@ -40,6 +40,7 @@ router.post("/", middleware.isLoggedIn,function(req ,res){
           
           product.comments.push(newComment);
           product.save();
+          console.log(newComment);
           res.redirect("/shop/"+req.params.id);
         }
       });
